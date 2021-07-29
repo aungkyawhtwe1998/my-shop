@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+    font-family: 'Roboto', sans-serif;
+}
+.content {
+    background: var(--primary-soft);
+    overflow: scroll;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .075) inset;
+}
+
+.header {
+    position: sticky;
+    top: 0.2rem;
+    z-index: 2000;
+}
+
+.sidebar {
+    overflow: scroll;
+}
+
+.sidebar.open {}
+
+.show-sidebar-btn {
+    cursor: pointer;
+}
+
+.full-screen-card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2002;
+    height: 100vh;
+    overflow: scroll;
+}
+
+.userimg {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.card {
+    border: none !important;
+}
+
+.status-card {
+    transition: 0.5s;
+}
+
+.status-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.status-card:active {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.ov-img {
+    margin-left: -25px;
+}
+
+.item-carousel {
+    margin-top: -100px;
+}
+
+.item-card-img {
+    height: 200px;
+}
+
+.sub-list {
+    transition: 0.3s;
+}
+
+.sub-list tr:active {
+    transform: scale(1.02);
+}
+
+table {
+    font-size: 11px;
+}
+
+.nav-menu {}
+
+.nav-brand{
+    background: white;
+    position: sticky;
+    top: 10px;
+}
+.nav-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #949494;
+    padding: 10px 0;
+}
+
+.menu-item {
+    transition: 0.5s;
+}
+
+.menu-item:hover {
+    background-color: #e7e7e7;
+    border-radius: 0.25rem;
+}
+
+.menu-item-link {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--primary-dark);
+}
+
+.menu-item-link:hover {
+    text-decoration: none;
+    border-radius: 0.25rem;
+    color: var(--primary-dark);
+}
+
+.menu-item-link.active {
+    background-color: var(--primary);
+    border-radius: 0.25rem;
+    color: white;
+}
+
+.menu-item-link span {}
+
+.menu-item-link i {}
+
+.menu-spacer {
+    padding: 15px 0;
+}
+
+@media screen and (max-width: 780px) {
+    .sidebar {
+        position: fixed;
+        width: 400px;
+        z-index: 2001;
+        display: block !important;
+        background-color: white;
+        margin-left: -100%;
+    }
+    .item-carousel-card {
+        margin-top: 100px;
+    }
+}
