@@ -9,9 +9,22 @@
     </x-bread-crumb>
     <div class="row">
         <div class="col-12">
-            <div class="card">
-                <div class="card-body">
+            <div class="card rounded shadow">
+                <div class="card-header">
                     <h4><i class="feather-users"></i> User Lists</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex my-3 justify-content-between align-items-center">
+                        <div class="">
+                            {{ $users->appends(Request::all())->links() }}
+                        </div>
+                        <form action="{{ route('category-manager.index') }}" method="POST" class="">
+                            <div class="form-inline">
+                                <input type="text" class="form-control mr-2" name="search-key">
+                                <button class="btn btn-primary">Search</button>
+                            </div>
+                        </form>
+                    </div>
                     <table class="table table-hover mb-0">
                         <thead>
                             <tr>
@@ -41,7 +54,7 @@
                                             </form>
 
                                             @if ($user->isBanned == 1)
-                                                <span class="badge badge-pill badge-danger">Banned</span>
+                                                <span class="badge badge-pill badge-danger p-2">Banned</span>
                                                 <form class="d-inline-block"
                                                     action="{{ route('user-manager.restoreUser') }}"
                                                     id="restoreForm{{ $user->id }}" method="POST">

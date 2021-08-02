@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class UserManagerController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::orderBy("id","desc")->paginate(5);
         return view('user-manager.index',compact('users'));
     }
     public function makeAdmin(Request $request){
