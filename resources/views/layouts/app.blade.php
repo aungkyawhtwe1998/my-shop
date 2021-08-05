@@ -38,7 +38,7 @@
     @endguest
 
 
-    <script src="{{ asset('js/app.js') }}" <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     @yield('foot')
     @auth
         @empty(Auth::user()->phone) //if the use do not uplad phone number

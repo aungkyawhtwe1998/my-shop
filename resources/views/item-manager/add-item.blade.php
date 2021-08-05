@@ -51,6 +51,9 @@
                                     <div class="">
                                         <div class="form-group">
                                             <span class="font-weight-bold text-primary">Choose Categories</span>
+                                            @error('category_id')
+                                                <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                            @enderror
                                             @foreach ($categories as $category)
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="customRadio{{ $category->id }}"

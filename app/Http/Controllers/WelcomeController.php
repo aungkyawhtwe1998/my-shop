@@ -19,6 +19,10 @@ class WelcomeController extends Controller
         $item = Item::find($id);
         return view("welcome.itemShow", compact('item'));
     }
+    public function showPortfolio()
+    {
+        return view("welcome.portfolio");
+    }
     public function showByCategory($id){
         // return $id;
         $categories = Category::all();

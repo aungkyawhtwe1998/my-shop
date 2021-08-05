@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\ItemPhoto;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ItemPhotoController extends Controller
 {
@@ -39,14 +40,18 @@ class ItemPhotoController extends Controller
     {
         // return $request;
         $request->validate([
-            "photo.*"=>"required|mimetypes:image/jpeg, image/jpg, image/png|file|max:2500"
+            "photo.*"=>"required|mimetypes:image/jpeg,image/png"
         ]);
         $fileNameArr = [];
         foreach($request->file("photo") as $file){
             $newFileName= uniqid()."_item.".$file->getClientOriginalExtension();
+            // array_push($fileNameArr, $newFileName);
+            // $file->storeAs($dir,$newFileName);
+            $img = Image::make($file);
+            $img->fit(300,300);                
             array_push($fileNameArr, $newFileName);
-            $dir = "/public/items/";
-            $file->storeAs($dir,$newFileName);
+            // $file->storeAs($dir,$newFileName);
+            $img->save("storage/items/".$newFileName);
         }
         foreach ($fileNameArr as $f){
             $photo = new ItemPhoto();

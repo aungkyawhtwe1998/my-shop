@@ -62,12 +62,12 @@
                                     <td>{{ $item->getUser->name }}</td>
                                     <td class="text-nowrap">
                                         <a href="{{ route('item.show', $item->id) }}"
-                                            class="btn btn-sm btn-sm btn-success"><i class="feather-info"></i></a>
-                                        <a href="{{ route('item.edit', $item->id) }}" class="btn btn-warning btn-sm">
+                                            class="btn btn-sm btn-sm btn-success rounded"><i class="feather-info"></i></a>
+                                        <a href="{{ route('item.edit', $item->id) }}" class="btn btn-warning btn-sm rounded">
                                             <i class="feather-edit-2"></i>
                                         </a>
                                         <button type="submit" form="del{{ $item->id }}"
-                                            class="btn btn-sm btn-danger btn-sm"><i class="feather-delete"></i></button>
+                                            class="btn btn-sm btn-danger btn-sm rounded"><i class="feather-delete"></i></button>
                                         <form action="{{ route('item.destroy', $item->id) }}"
                                             id="del{{ $item->id }}" method="post">
                                             @csrf

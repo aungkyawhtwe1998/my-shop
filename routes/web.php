@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/welcome/{id}','WelcomeController@show')->name('welcome.show');
 Route::get('/welcome-category/{id}','WelcomeController@showbyCategory')->name('welcome.category');
-
+Route::get('/welcome-portfolio', 'WelcomeController@showPortfolio')->name('portfolio');
+Route::resource('message', 'MessageController');
 Auth::routes();
 
 //Auth middleware
@@ -33,21 +34,19 @@ Route::middleware(["auth","isBanned"])->group(function(){
         Route::post("/ban-user","UserManagerController@banUser")->name('user-manager.banUser');
         Route::post("/restore-user","UserManagerController@restoreUser")->name('user-manager.restoreUser');
         Route::post("/change-user-password","UserManagerController@changeUserPassword")->name('user-manager.changeUserPassword');
-
-         
-        //Categories
-        // Route::resource("category", "CategoryController");
-
-        Route::get('/category-manager','CategoryController@index')->name('category-manager.index');
-        Route::post('/cateogry-manager-add','CategoryController@store')->name('catergory-manager.addCategory');
-        Route::post('/cateogry-manager-delete/{id}','CategoryController@destroy')->name('catergory-manager.destroy');
-        Route::post('/cateogry-manager-edit','CategoryController@update')->name('catergory-manager.update');
     });
 
     //Items
     Route::resource('item', 'ItemController');
     Route::resource('item-photo', 'ItemPhotoController');
-   
+    
+    //Categories
+    // Route::resource("category", "CategoryController");
+
+    Route::get('/category-manager','CategoryController@index')->name('category-manager.index');
+    Route::post('/cateogry-manager-add','CategoryController@store')->name('catergory-manager.addCategory');
+    Route::post('/cateogry-manager-delete/{id}','CategoryController@destroy')->name('catergory-manager.destroy');
+    Route::post('/cateogry-manager-edit','CategoryController@update')->name('catergory-manager.update');
 
 
 

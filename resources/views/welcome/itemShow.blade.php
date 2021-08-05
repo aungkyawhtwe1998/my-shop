@@ -55,33 +55,36 @@
             </nav>
         </div>
     </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="card rounded shadow">
+                    <div class="card-header">Item Detail</div>
+                    <div class="card-body">
+                        <h4 class="text-primary font-weight-bold">{{ $item->title }}</h4>
 
-    <div class="row">
-        <div class="col-12 col-md-6">
-            <div class="card rounded shadow">
-                <div class="card-header">Item Detail</div>
-                <div class="card-body">
-                    <h4 class="text-primary font-weight-bold">{{ $item->title }}</h4>
-
-                    <span class="badge badge-pill badge-success">
-                        <i class="feather-user"></i>
-                        {{ $item->getUser->name }}
-                    </span>
-                    <span class="badge badge-pill badge-info">
-                        <i class="feather-calendar"></i>
-                        {{ $item->created_at->format('d M Y') }}
-                    </span>
-                    <hr>
-                    <p class="text-">{{ $item->description }}</p>
-                    <div class="my-5">
-                        @foreach ($item->getPhotos as $img)
-                            <img src="{{ asset('storage/items/' . $img->location) }}" class="d-block w-100 my-1">
-                        @endforeach
+                        <span class="badge badge-pill badge-success">
+                            <i class="feather-user"></i>
+                            {{ $item->getUser->name }}
+                        </span>
+                        <span class="badge badge-pill badge-info">
+                            <i class="feather-calendar"></i>
+                            {{ $item->created_at->format('d M Y') }}
+                        </span>
+                        <hr>
+                        <p class="text-">{{ $item->description }}</p>
+                        <div class="my-5">
+                            @foreach ($item->getPhotos as $img)
+                                <img src="{{ asset('storage/items/' . $img->location) }}" class="d-block w-100 my-1">
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </body>
 <script src="{{ asset('js/app.js') }}" <script src="{{ asset('js/app.js') }}"></script>
 

@@ -19,6 +19,9 @@ class CreateItemsTable extends Migration
             $table->longText('description');
             $table->integer('category_id');
             $table->integer('user_id');
+            $table->double('orignial_price');
+            $table->double('promotion_price')->nullable();
+            $table->text('qr_code');
             $table->timestamps();
         });
     }

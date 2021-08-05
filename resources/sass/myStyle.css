@@ -93,7 +93,7 @@ tr td {
 
 .show-thumbnail {
     margin-top: 10px;
-    width: 100%;
+    width: 150px;
     height: 150px;
     display: inline-block;
     border-radius: 0.25rem;
@@ -143,7 +143,7 @@ tr td {
 
 .menu-item-link.active {
     background-color: var(--primary);
-    border-radius: 0.25rem;
+    border-radius: 1.5rem;
     color: white;
 }
 

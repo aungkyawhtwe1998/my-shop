@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ItemController extends Controller
 {
@@ -57,9 +58,11 @@ class ItemController extends Controller
             $fileNameArr = [];
             foreach($request->file('photo') as $file){
                 $newFileName = uniqid()."_item.".$file->getClientOriginalExtension();
+                $img = Image::make($file);
+                $img->fit(300,300);                
                 array_push($fileNameArr, $newFileName);
-                $dir = "/public/items/";
-                $file->storeAs($dir,$newFileName);
+                // $file->storeAs($dir,$newFileName);
+                $img->save("storage/items/".$newFileName);
             }
         }
 

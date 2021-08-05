@@ -49,7 +49,7 @@
                                                 id="form{{ $user->id }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $user->id }}">
-                                                <button type="button" class="btn btn-sm btn-outline-primary"
+                                                <button type="button" class="btn btn-sm btn-outline-primary rounded"
                                                     onclick="askConfirm({{ $user->id }})" )">Make Admin</button>
                                             </form>
 
@@ -60,7 +60,7 @@
                                                     id="restoreForm{{ $user->id }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $user->id }}">
-                                                    <button type="button" class="btn btn-sm btn-outline-success"
+                                                    <button type="button" class="btn btn-sm btn-outline-success rounded"
                                                         onclick="restoreUser({{ $user->id }})" )">Restore User</button>
                                                 </form>
                                             @else
@@ -68,11 +68,11 @@
                                                     id="banForm{{ $user->id }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $user->id }}">
-                                                    <button type="button" class="btn btn-sm btn-outline-danger"
+                                                    <button type="button" class="btn btn-sm btn-outline-danger rounded"
                                                         onclick="banUser({{ $user->id }})" )">Ban User</button>
                                                 </form>
                                             @endif
-                                            <button class="btn btn-outline-warning btn-sm"
+                                            <button class="btn btn-outline-warning btn-sm rounded"
                                                 onclick="changePassword({{ $user->id }},'{{ $user->name }}')">Change
                                                 Password</button>
                                         @endif

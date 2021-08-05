@@ -1,4 +1,4 @@
-<li class="menu-item">
+<li class="menu-item rounded mb-1">
     <a href="{{ $link }}" class="menu-item-link {{ $link === Request::url() ? 'active' : '' }}">
         <span>
             <i class="{{ $class }}"></i>
