@@ -14,8 +14,6 @@
     overflow: scroll;
 }
 
-.sidebar.open {}
-
 .show-sidebar-btn {
     cursor: pointer;
 }
@@ -92,11 +90,17 @@ tr td {
 }
 
 .show-thumbnail {
-    margin-top: 10px;
     width: 150px;
     height: 150px;
     display: inline-block;
     border-radius: 0.25rem;
+    background-size: cover;
+}
+
+.cover-thumbnail {
+    width: 100%;
+    height: 300px;
+    display: inline-block;
     background-size: cover;
 }
 
@@ -137,13 +141,13 @@ tr td {
 
 .menu-item-link:hover {
     text-decoration: none;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     color: var(--primary-dark);
 }
 
 .menu-item-link.active {
     background-color: var(--primary);
-    border-radius: 1.5rem;
+    border-radius: 0.5rem;
     color: white;
 }
 
@@ -167,4 +171,10 @@ tr td {
     .item-carousel-card {
         margin-top: 100px;
     }
+    table {
+        overflow-x: auto;
+        display: block;
+    }
 }
+
+@media screen and (max-width: px) {}

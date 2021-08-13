@@ -48,18 +48,22 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $request->validate([
             'title'=>'required|max:255',
-            'description'=>'required|min:30',
+            'description'=>'required|min:10',
             'category_id'=>'required',
-            "photo.*"=>"required|mimetypes:image/jpeg,image/png"
+            "photo.*"=>"required|mimetypes:image/jpeg,image/png",
+            'normal_price'=>"required",
+            'promotion_price'=>"required",
+            'stock'=>'required'
         ]);
         if($request->hasFile("photo")){
             $fileNameArr = [];
             foreach($request->file('photo') as $file){
                 $newFileName = uniqid()."_item.".$file->getClientOriginalExtension();
                 $img = Image::make($file);
-                $img->fit(300,300);                
+                // $img->fit(300,300);                
                 array_push($fileNameArr, $newFileName);
                 // $file->storeAs($dir,$newFileName);
                 $img->save("storage/items/".$newFileName);
@@ -70,6 +74,9 @@ class ItemController extends Controller
         $item->title = $request->title;
         $item->description = $request->description;
         $item->category_id = $request->category_id;
+        $item->original_price = $request->normal_price;
+        $item->promotion_price = $request->promotion_price;
+        $item->stock = $request->stock;
         $item->user_id = Auth::id();
         $item->save();
 
@@ -123,11 +130,18 @@ class ItemController extends Controller
     {
         $request->validate([
             'title'=>'required|min:10|max:255',
-            'description'=>'required|min:30'            
+            'description'=>'required|min:30',
+            'category_id'=>'required',
+            'original_price'=>"required",
+            'promotion_price'=>"required",
+            'stock'=>'required'           
         ]);
         $item->title = $request->title;
         $item->description = $request->description;
         $item->category_id = $request->category_id;
+        $item->original_price = $request->original_price;
+        $item->promotion_price = $request->promotion_price;
+        $item->stock =$request->stock;
         $item->update();
         return redirect()->route('item.index')->with("toast",['icon'=>'success','title'=>$request->title.' is updated']);
     }

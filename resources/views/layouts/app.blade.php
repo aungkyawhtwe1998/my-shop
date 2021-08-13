@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title','Admin Dashboard')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     @yield('mystyle')
 
     @yield('head')
@@ -37,9 +38,10 @@
         </section>
     @endguest
 
-
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     @yield('foot')
+
     @auth
         @empty(Auth::user()->phone) //if the use do not uplad phone number
             @include('user-profile.update-info')
@@ -48,7 +50,6 @@
     @endauth
     @include('layouts.toasts')
     @include('layouts.alert')
-
 
 </body>
 

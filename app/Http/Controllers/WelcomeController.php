@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Item;
+use App\Post;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -14,19 +15,20 @@ class WelcomeController extends Controller
         $items = Item::all();
         return view('welcome.index',compact('items','categories'));
     }
-    public function show($id)
+    public function showItem($id)
     {
         $item = Item::find($id);
         return view("welcome.itemShow", compact('item'));
     }
+    
     public function showPortfolio()
-    {
-        return view("welcome.portfolio");
+    {   
+        $posts = Post::orderBy('id','desc')->limit(3)->get();
+        return view("welcome.portfolio",compact('posts'));
     }
     public function showByCategory($id){
         // return $id;
         $categories = Category::all();
-
         $items = Item::all()->where('category_id',$id);
         return view('welcome.index',compact('items','categories'));
 

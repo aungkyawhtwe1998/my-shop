@@ -1,19 +1,19 @@
 @extends('layouts.app')
 @section('title')
-    Categories
+    Post Categories
 @endsection
 @section('content')
 
     <x-bread-crumb>
-        <li class="breadcrumb-item active" aria-current="page">Categories</li>
+        <li class="breadcrumb-item active" aria-current="page">Post Categories</li>
     </x-bread-crumb>
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <span><i class="feather-list"></i> Category Manager</span>
+                    <span><i class="feather-list"></i>Post Category Manager</span>
                     <hr>
-                    <form action="{{ route('catergory-manager.addCategory') }}" method="POST">
+                    <form action="{{ route('post-category.store') }}" method="POST">
                         @csrf
                         <div class="form-inline">
                             <input type="text" class="form-control mr-2" name="title" placeholder="Enter Category Name"
@@ -32,14 +32,14 @@
                             <th>Updated at</th>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            @foreach ($postCategory as $category)
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->title }}</td>
                                     <td>{{ $category->getUser->name }}</td>
                                     <td class="text-nowrap">
                                         <form class="d-inline-block"
-                                            action="{{ route('catergory-manager.destroy', $category->id) }}" method="post"
+                                            action="{{ route('post-category.destroy', $category->id) }}" method="post"
                                             id="deleteForm{{ $category->id }}">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $category->id }}">
@@ -100,7 +100,7 @@
         }
 
         function changeCategoryName(id, name) {
-            let url = "{{ route('catergory-manager.update') }}";
+            let url = "{{ route('post-category.update') }}";
             Swal.fire({
                 title: 'Change: ' + name + ' to',
                 input: 'text',

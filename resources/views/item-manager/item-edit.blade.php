@@ -36,6 +36,41 @@
                                     @enderror
 
                                 </div>
+                                <div class="form-row">
+                                    <div class="mb-2 col-md-6">
+                                        <label class="text-primary font-weight-bold" for="original_price">
+                                            Normal
+                                        </label>
+                                        <input type="text" name="original_price" id="original_price"
+                                            class="form-control @error('original_price') is-invalid @enderror"
+                                            value="{{ $item->original_price }}">
+                                        @error('original_price')
+                                            <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-2 col-md-6">
+                                        <label class="text-primary font-weight-bold" for="promotion_price">
+                                            Promotion Price
+                                        </label>
+                                        <input type="text" name="promotion_price" id="promotion_price"
+                                            class="form-control @error('promotion_price') is-invalid @enderror"
+                                            value="{{ $item->promotion_price }}">
+                                        @error('promotion_price')
+                                            <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-primary font-weight-bold" for="stock">
+                                        Item stock
+                                    </label>
+                                    <input type="number" name="stock" id="stock"
+                                        class="form-control @error('stock') is-invalid @enderror"
+                                        value="{{ $item->stock }}">
+                                    @error('stock')
+                                        <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <textarea name="description" id="description" cols="" rows="5"

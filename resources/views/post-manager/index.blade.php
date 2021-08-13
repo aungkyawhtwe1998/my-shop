@@ -15,9 +15,9 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center my-3">
                         <div class="">
-                            {{ $items->appends(Request::all())->links() }}
+                            {{ $posts->appends(Request::all())->links() }}
                         </div>
-                        <form action="{{ route('item.index') }}" method="get">
+                        <form action="{{ route('post.index') }}" method="get">
                             <div class="d-flex">
                                 <input type="text" class="form-control mr-2" name="search">
                                 <button class="btn btn-primary">Search</button>
@@ -39,45 +39,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($items as $item)
+                            @foreach ($posts as $post)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->title }}</td>
+                                    <td>{{ $post->id }}</td>
+                                    <td>{{ Str::substr($post->name, 0, 30) }}</td>
                                     <td>
-                                        {{ substr($item->description, 0, 80) }} ...
+                                        <?php echo Str::substr(html_entity_decode($post->description, ENT_QUOTES), 0, 50); ?> ...
 
-                                        <br>
-                                        @isset($item->getPhotos)
-
-                                            @foreach ($item->getPhotos as $photo)
-                                                {{-- {{ $photo->location }} --}}
-                                                <div class="item-thumbnail"
-                                                    style="background-image:url('{{ asset('storage/items/' . $photo->location) }}')">
-                                                </div>
-                                            @endforeach
-                                        @endisset
 
                                     </td>
-                                    <td>{{ $item->getCategoryName->title }}</td>
-                                    <td>{{ $item->getUser->name }}</td>
+                                    <td>{{ $post->getCategoryName->title }}</td>
+                                    <td>{{ $post->getUser->name }}</td>
                                     <td class="text-nowrap">
-                                        <a href="{{ route('item.show', $item->id) }}"
+                                        <a href="{{ route('post.show', $post->id) }}"
                                             class="btn btn-sm btn-sm btn-success rounded"><i class="feather-info"></i></a>
-                                        <a href="{{ route('item.edit', $item->id) }}"
+                                        <a href="{{ route('post.edit', $post->id) }}"
                                             class="btn btn-warning btn-sm rounded">
                                             <i class="feather-edit-2"></i>
                                         </a>
-                                        <button type="submit" form="del{{ $item->id }}"
+                                        <button type="submit" form="del{{ $post->id }}"
                                             class="btn btn-sm btn-danger btn-sm rounded"><i
                                                 class="feather-delete"></i></button>
-                                        <form action="{{ route('item.destroy', $item->id) }}"
-                                            id="del{{ $item->id }}" method="post">
+                                        <form action="{{ route('post.destroy', $post->id) }}" id="del{{ $post->id }}"
+                                            method="post">
                                             @csrf
                                             @method("delete")
                                         </form>
                                     </td>
-                                    <td>{{ $item->created_at }}</td>
-                                    <td>{{ $item->updated_at }}</td>
+                                    <td>{{ $post->created_at }}</td>
+                                    <td>{{ $post->updated_at }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

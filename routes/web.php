@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
+use App\PostCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//welcome page
 Route::get('/', 'WelcomeController@index')->name('welcome');
-Route::get('/welcome/{id}','WelcomeController@show')->name('welcome.show');
+Route::get('/welcome/{id}','WelcomeController@showItem')->name('welcome-item.show');
+
+//blog page
+Route::get('/blogs', 'BlogController@index')->name('blogs');
+Route::get('/blogs/{id}','BlogController@showPost')->name('blogs.show');
+Route::get('/blogs-category/{id}','BlogController@showByCategory')->name('blogs.showbyCategory');
+
+
 Route::get('/welcome-category/{id}','WelcomeController@showbyCategory')->name('welcome.category');
-Route::get('/welcome-portfolio', 'WelcomeController@showPortfolio')->name('portfolio');
+Route::get('/alex', 'WelcomeController@showPortfolio')->name('portfolio');
+
 Route::resource('message', 'MessageController');
 Auth::routes();
 
@@ -34,21 +44,25 @@ Route::middleware(["auth","isBanned"])->group(function(){
         Route::post("/ban-user","UserManagerController@banUser")->name('user-manager.banUser');
         Route::post("/restore-user","UserManagerController@restoreUser")->name('user-manager.restoreUser');
         Route::post("/change-user-password","UserManagerController@changeUserPassword")->name('user-manager.changeUserPassword');
+
+        //category manager
+        Route::get('/category-manager','CategoryController@index')->name('category-manager.index');
+        Route::post('/cateogry-manager-add','CategoryController@store')->name('catergory-manager.addCategory');
+        Route::post('/cateogry-manager-delete/{id}','CategoryController@destroy')->name('catergory-manager.destroy');
+        Route::post('/cateogry-manager-edit','CategoryController@update')->name('catergory-manager.update');
+    
+        Route::resource('post-category', 'PostCategoryController');
+        Route::post('/post-category-edit','PostCategoryController@update')->name('post-category.update');
+    
     });
 
     //Items
     Route::resource('item', 'ItemController');
     Route::resource('item-photo', 'ItemPhotoController');
-    
-    //Categories
-    // Route::resource("category", "CategoryController");
 
-    Route::get('/category-manager','CategoryController@index')->name('category-manager.index');
-    Route::post('/cateogry-manager-add','CategoryController@store')->name('catergory-manager.addCategory');
-    Route::post('/cateogry-manager-delete/{id}','CategoryController@destroy')->name('catergory-manager.destroy');
-    Route::post('/cateogry-manager-edit','CategoryController@update')->name('catergory-manager.update');
-
-
+    //Post
+    Route::resource('post', 'PostController');
+    Route::resource('post-cover-photo', 'PostCoverPhotoController'); 
 
     //profile routes
     Route::prefix('profile')->group(function(){

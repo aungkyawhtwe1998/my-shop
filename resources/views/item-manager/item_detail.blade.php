@@ -28,6 +28,14 @@
                         {{ $item->created_at->format('d M Y') }}
                     </span>
                     <hr>
+                    <span class="badge badge-pill badge-secondary">
+                        <i class="fas fa-money-bill"></i>
+                        {{ $item->original_price }}
+                    </span>
+                    <span class="badge badge-pill badge-warning">
+                        <i class="fas fa-money-bill"></i>
+                        {{ $item->promotion_price }}
+                    </span>
                     <p class="text-">{{ $item->description }}</p>
                     <div class="">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

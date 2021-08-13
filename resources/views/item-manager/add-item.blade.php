@@ -25,8 +25,8 @@
                             <div class="row">
                                 <div class="col-12 col-md-6">
                                     <div class="">
-                                        <div class="form-group">
-                                            <label for="title">
+                                        <div class="mr-1 mb-2">
+                                            <label class="text-primary font-weight-bold" for="title">
                                                 Item Title
                                             </label>
                                             <input type="text" name="title" id="title"
@@ -35,10 +35,46 @@
                                             @error('title')
                                                 <small class="font-weight-bold text-danger">{{ $message }}</small>
                                             @enderror
-
                                         </div>
+                                        <div class="form-row">
+                                            <div class="mb-2 col-md-6">
+                                                <label class="text-primary font-weight-bold" for="normal_price">
+                                                    Normal
+                                                </label>
+                                                <input type="text" name="normal_price" id="normal_price"
+                                                    class="form-control @error('normal_price') is-invalid @enderror"
+                                                    value="{{ old('original_price') }}">
+                                                @error('normal_price')
+                                                    <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-2 col-md-6">
+                                                <label class="text-primary font-weight-bold" for="promotion_price">
+                                                    Promotion Price
+                                                </label>
+                                                <input type="text" name="promotion_price" id="promotion_price"
+                                                    class="form-control @error('promotion_price') is-invalid @enderror"
+                                                    value="{{ old('promotion_price') }}">
+                                                @error('promotion_price')
+                                                    <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="mr-1 mb-2">
+                                            <label class="text-primary font-weight-bold" for="stock">
+                                                Item stock
+                                            </label>
+                                            <input type="text" name="stock" id="stock"
+                                                class="form-control @error('stock') is-invalid @enderror"
+                                                value="{{ old('stock') }}">
+                                            @error('stock')
+                                                <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
                                         <div class="form-group">
-                                            <label for="description">Description</label>
+                                            <label class="text-primary font-weight-bold"
+                                                for="description">Description</label>
                                             <textarea name="description" id="description" cols="" rows="5"
                                                 class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
                                             @error('description')

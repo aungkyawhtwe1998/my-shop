@@ -8,12 +8,18 @@
     <title>@yield('title','Admin Dashboard')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
+<style>
+    body {
+        background-color: #000000;
+    }
+
+</style>
 
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <nav class="navbar navbar-expand-lg navbar-light bg-primary rounded">
                     <a class="navbar-brand" href="#"><img src="{{ asset('') }}" alt="" class="">MyShop</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -37,7 +43,7 @@
                         </ul>
                         <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                         </form>
                     </div>
                 </nav>
@@ -58,8 +64,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6">
-                <div class="card rounded shadow">
-                    <div class="card-header">Item Detail</div>
+                <div class="card bg-dark rounded shadow">
+                    <div class="card-header text-light">Item Detail</div>
                     <div class="card-body">
                         <h4 class="text-primary font-weight-bold">{{ $item->title }}</h4>
 
@@ -72,14 +78,30 @@
                             {{ $item->created_at->format('d M Y') }}
                         </span>
                         <hr>
-                        <p class="text-">{{ $item->description }}</p>
-                        <div class="my-5">
-                            @foreach ($item->getPhotos as $img)
-                                <img src="{{ asset('storage/items/' . $img->location) }}" class="d-block w-100 my-1">
-                            @endforeach
-                        </div>
+                        <p class="text-light">{{ $item->description }}</p>
+
                     </div>
                 </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <div class="card bg-dark rounded shodow-sm">
+                        <div class="card-body">
+                            <div class="row">
+                                @foreach ($item->getPhotos as $img)
+                                    <div class="col-6">
+                                        <img src="{{ asset('storage/items/' . $img->location) }}"
+                                            class="rounded d-block w-100 my-1">
+                                    </div>
+
+                                @endforeach
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
