@@ -107,7 +107,6 @@ class ItemPhotoController extends Controller
     {
         // $itemPhoto->delete();
         // return redirect()->back()->with("toast",['icon'=>'success','title'=>'Photo is removed']);
-        return $itemPhoto;
         $dir = "public/items/";
         Storage::delete($dir.$itemPhoto->location);            
         $itemPhoto->delete();

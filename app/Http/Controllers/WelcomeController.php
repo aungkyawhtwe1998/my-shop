@@ -26,11 +26,4 @@ class WelcomeController extends Controller
         $posts = Post::orderBy('id','desc')->limit(3)->get();
         return view("welcome.portfolio",compact('posts'));
     }
-    public function showByCategory($id){
-        // return $id;
-        $categories = Category::all();
-        $items = Item::all()->where('category_id',$id);
-        return view('welcome.index',compact('items','categories'));
-
-    }
 }

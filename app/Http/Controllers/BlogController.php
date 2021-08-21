@@ -15,18 +15,21 @@ class BlogController extends Controller
         $categories = PostCategory::all();
         return view('blog-page.index',compact('posts','categories'));
     }
-    public function showPost($id)
-    {
-        $post = Post::find($id);
-        return view("blog-page.postShow", compact('post'));
-    }
+   
+
 
     public function showByCategory($id){
-        // return $id;
         $categories = PostCategory::all();
         $posts = Post::orderBy("id","desc")->where('category_id',$id)->paginate(4);
         return view('blog-page.index',compact('posts','categories'));
-    }
+    } 
 
+    public function show($category_id, $id)
+    {        
+        $post = Post::find($id);
+        $posts = Post::orderBy('id','desc')->where('id','<>',$id)->where('category_id','=',$category_id)->limit(3)->get();
+        // return $post;
+        return view("blog-page.postShow", compact('post','posts'));
+    }
 
 }

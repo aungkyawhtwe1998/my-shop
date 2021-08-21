@@ -1,3 +1,26 @@
+:root {
+    --bg: #141a24;
+    --text: #C9D1D9;
+    --card: #141a24;
+    --bg-black: #090C10;
+    --header: #E3B341;
+    --primary: #3E73B0;
+    --dark: #1a2639;
+    --gray: #3e4a61;
+    --orange: #e66724;
+    --teal: #009278;
+    --light: #d9dad7;
+    --border-radius: 0.5rem;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 .content {
     background: var(--primary-soft);
     overflow: scroll;
@@ -10,13 +33,98 @@
     z-index: 1005;
 }
 
+.header-bar {
+    background-color: var(--primary);
+}
+
+/* Card */
+
+.my-card {
+    padding: 10px;
+    margin: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.322);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, .1) !important;
+    overflow: hidden;
+    backdrop-filter: blur(50%);
+    transition: 0.4s;
+}
+
+.blog-card {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.322);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, .1) !important;
+    overflow: hidden;
+    backdrop-filter: blur(50%);
+    transition: 0.4s;
+    margin-bottom: 5px;
+    color: var(--light);
+}
+
+.my-card:hover {
+    transform: scale(0.98);
+}
+
+.blog-card:hover {
+    transform: scale(0.98);
+}
+
+/* Card */
+
+.my-input {
+    outline: none;
+    text-decoration: none;
+    color: var(--light) !important;
+    font-weight: bold;
+    background-color: var(--dark) !important;
+    border: 2px solid var(--primary) !important;
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+}
+
+/* 
+.card {
+    color: var(--text);
+    background-color: var(--card) !important;
+}
+
+.card-header {
+    background-color: var(--card) !important;
+    color: var(--text);
+}
+
+input {
+    background-color: var(--card) !important;
+    color: var(--text) !important;
+}
+
+textarea {
+    background-color: #161B22 !important;
+    color: var(--text) !important;
+}
+
+select {
+    background-color: #161B22 !important;
+    color: var(--bg-black) !important;
+}
+
+*/
+
 .sidebar {
+    /* background-color: var(--bg-black) !important; */
     overflow: scroll;
 }
 
 .show-sidebar-btn {
+    /* background-color: var(--bg-black); */
     cursor: pointer;
 }
+
+.hide-sidebar-btn {
+    /* background-color: var(--bg); */
+    cursor: pointer;
+}
+
 
 .full-screen-card {
     position: fixed;
@@ -73,10 +181,17 @@
 }
 
 table {
-    font-size: 11px;
+    font-size: 12px !important;
+    font-weight: bold !important;
 }
 
+/* 
+th {
+    color: var(--header) !important;
+} */
+
 tr td {
+    /* color: var(--text) !important; */
     vertical-align: middle !important;
 }
 
@@ -116,6 +231,36 @@ tr td {
     padding: 0;
 }
 
+.navbar {
+    margin: 0px !important;
+    padding: 0px 10px !important;
+    background-color: #161B22 !important;
+}
+
+.navbar-nav {
+    padding: 20px;
+    padding: 15px !important;
+}
+
+.nav-link {
+    border-radius: var(--border-radius);
+    text-align: center;
+    padding: 0.5rem !important;
+    color: var(--light) !important;
+}
+
+.nav-link:hover {
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 5px;
+}
+
+.nav-link.current-section {
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 5px;
+}
+
 .menu-title {
     font-weight: bold;
     text-transform: uppercase;
@@ -136,24 +281,20 @@ tr td {
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    color: var(--primary-dark);
+    /* color: #C9D1D9; */
 }
 
 .menu-item-link:hover {
     text-decoration: none;
     border-radius: 0.5rem;
-    color: var(--primary-dark);
+    /* color: var(--primary-dark); */
 }
 
 .menu-item-link.active {
     background-color: var(--primary);
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     color: white;
 }
-
-.menu-item-link span {}
-
-.menu-item-link i {}
 
 .menu-spacer {
     padding: 15px 0;
@@ -175,6 +316,17 @@ tr td {
         overflow-x: auto;
         display: block;
     }
+    .nav-link {
+        margin-bottom: 10px;
+        text-align: center;
+        height: 50px;
+        width: 400px;
+        background-color: #1A2639;
+    }
+    .navbar-nav {
+        padding: 20px;
+        align-items: center;
+    }
 }
 
-@media screen and (max-width: px) {}
+@media screen and (max-width: 480px) {}

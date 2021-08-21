@@ -1,11 +1,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Padauk:wght@400;700&display=swap');@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Padauk:wght@400;700&display=swap');
 $font-family-sans-serif: 'Montserrat','Padauk', sans-serif;
-$primary:#2a2b5f;
-$success:#0b8457;
-$warning:#eac100;
-$danger:#d72323;
-$border-radius: 0.5rem;
+$primary:#3E73B0;
+$secondary:#2F333A;
+$light:#C9D1D9;
+$success:#238636;
+$warning:#E3B341;
+$danger:#E34C26;
+$border-radius: 0.2rem;
+$border-width:2px;
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import 'feather-icons-web/feather.css';
@@ -13,4 +16,3 @@ $border-radius: 0.5rem;
 $swal2-confirm-button-background-color:$primary;
 @import '~sweetalert2/src/sweetalert2';
 @import 'myStyle.css';
-@import 'portfolio-style.css';

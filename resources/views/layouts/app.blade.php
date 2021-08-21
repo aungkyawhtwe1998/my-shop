@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     @yield('mystyle')
+    <style>
+        body {
+            /* background-color: #090C10; */
+        }
 
+    </style>
     @yield('head')
 
 </head>

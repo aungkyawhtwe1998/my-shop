@@ -6,12 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title','My Shop')</title>
-    <link rel="shortcut icon" href="img/my-logo.png">
+    <link rel="shortcut icon" href="{{ asset('portfolio/img/programmer.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('portfolio/animate_it/animate.css') }}">
-    {{-- <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css"> --}}
-    <link rel="stylesheet" href="{{ asset('portfolio/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('portfolio/slick/slick-theme.css') }}">
 </head>
 @yield('style')
 
@@ -30,14 +26,17 @@
     @yield('content')
 
     {{-- footer --}}
-    <section class="container" id="contact">
-        <div class="row">
-            @include('layouts.host-footer')
-        </div>
-    </section>
-    {{-- end footer --}}
+    @yield('footer')
 
+    
+    {{-- end footer --}}
+    <script src="{{ asset('portfolio/js/jquery.js') }}"></script>
+    <script src="{{ asset('portfolio/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('portfolio/wow/wow.js') }}"></script>
+    <script src="{{ asset('portfolio/way_point/jquery.waypoints.js') }}"></script>
+    <script src="{{ asset('portfolio/js/app.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" <script src="{{ asset('js/app.js') }}"></script>
+
     @yield('foot')
     @include('layouts.toasts')
     @include('layouts.alert')

@@ -129,8 +129,8 @@ class ItemController extends Controller
     public function update(Request $request, Item $item)
     {
         $request->validate([
-            'title'=>'required|min:10|max:255',
-            'description'=>'required|min:30',
+            'title'=>'required|min:5|max:255',
+            'description'=>'required|min:20',
             'category_id'=>'required',
             'original_price'=>"required",
             'promotion_price'=>"required",

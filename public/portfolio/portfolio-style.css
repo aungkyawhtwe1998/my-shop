@@ -1,12 +1,3 @@
-:root {
-    --dark: #1a2639;
-    --gray: #3e4a61;
-    --orange: #e66724;
-    --teal: #009278;
-    --light: #d9dad7;
-    --border-radius: 0.5rem;
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -15,6 +6,8 @@ html {
     width: 40px;
     height: 40px;
 }
+
+/* Nav Bar and Link */
 
 .site-nav {
     position: absolute;
@@ -37,6 +30,11 @@ html {
     to {
         transform: translateY(0);
     }
+}
+
+.navbar {
+    top: 5px;
+    /* background-color: #161B22; */
 }
 
 .navbar-toggler:focus {
@@ -68,6 +66,12 @@ html {
     color: var(--light) !important;
 }
 
+.nav-link:hover {
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 10px;
+}
+
 .nav-link.current-section {
     border: 2px solid var(--orange);
     border-radius: var(--border-radius);
@@ -79,6 +83,10 @@ html {
     border-radius: var(--border-radius);
     padding: 10px;
 }
+
+/* end Nav Bar and Link */
+
+/* home */
 
 .home {
     background-repeat: no-repeat;
@@ -293,7 +301,7 @@ html {
     background-color: var(--teal);
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 480px) {
     nav-link.current-section {
         border: 2px solid var(--teal);
         border-radius: 10em;

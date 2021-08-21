@@ -45,8 +45,6 @@
                                     <td>{{ Str::substr($post->name, 0, 30) }}</td>
                                     <td>
                                         <?php echo Str::substr(html_entity_decode($post->description, ENT_QUOTES), 0, 50); ?> ...
-
-
                                     </td>
                                     <td>{{ $post->getCategoryName->title }}</td>
                                     <td>{{ $post->getUser->name }}</td>

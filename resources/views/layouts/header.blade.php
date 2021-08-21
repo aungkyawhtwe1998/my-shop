@@ -1,21 +1,21 @@
 <div class="row header mb-3">
     <div class="col-12">
-        <div class="p-2 bg-primary rounded d-flex justify-content-between align-items-center">
-            <button class="show-sidebar-btn btn btn-primary btn-link d-lg-none">
+        <div class="p-2 header-bar rounded d-flex justify-content-between align-items-center">
+            <button class="show-sidebar-btn btn btn-link d-lg-none">
                 <i class="feather-menu text-light" style="font-size: 2em;"></i>
             </button>
 
             <form action="" method="post" class="d-none d-md-block">
                 <div class="form-inline d-flex">
-                    <input type="text" class="form-control mr-2">
-                    <button class="btn btn-light">
+                    <input type="text" class="border-light text-light bg-primary form-control mr-2">
+                    <button class="btn btn-outline-light">
                         <i class="feather-search"></i>
                     </button>
                 </div>
             </form>
 
-            <div class="dropdown">
-                <a class="btn btn-light" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            <div class="dropdown bg-primary border-light rounded">
+                <a class="btn btn-primary " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <img src="{{ isset(Auth::user()->photo) ? asset('storage/profile/' . Auth::user()->photo) : asset('dashboard/img/user/default-user.png') }}"
                         class="userimg" alt="">
@@ -24,11 +24,12 @@
                     </span>
                 </a>
 
-                <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item rounded" href="{{ route('profile') }}">View Profile</a>
-                    <a class="dropdown-item rounded" href="{{ route('profile.edit.password') }}">Change Password</a>
+                <div class="dropdown-menu p-2 bg-dark " aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item rounded text-light" href="{{ route('profile') }}">View Profile</a>
+                    <a class="dropdown-item rounded text-light" href="{{ route('profile.edit.password') }}">Change
+                        Password</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item rounded" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    <a class="dropdown-item rounded text-light" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>

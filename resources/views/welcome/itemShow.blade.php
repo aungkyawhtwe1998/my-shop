@@ -1,67 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.host')
+@section('title')
+    {{ $item->title }}
+@endsection
+@section('style')
+    <style>
+        body {
+            background-color: #090C10;
+        }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title','Admin Dashboard')</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-<style>
-    body {
-        background-color: #000000;
-    }
-
-</style>
-
-<body>
+    </style>
+@endsection
+@section('header')
+    <div class="row header mt-0">
+        @include('layouts.host-header')
+    </div>
+@endsection
+@section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <nav class="navbar navbar-expand-lg navbar-light bg-primary rounded">
-                    <a class="navbar-brand" href="#"><img src="{{ asset('') }}" alt="" class="">MyShop</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}" tabindex="-1"
-                                    aria-disabled="true">Register</a>
-                            </li>
-                        </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                    </div>
-                </nav>
+                <x-host-bread-crumb>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $item->title }}</li>
+                </x-host-bread-crumb>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12 colt-lg-6">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb bg-transparent">
-                    <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Item Detail</li>
-
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="card bg-dark rounded shadow">
@@ -105,10 +67,9 @@
             </div>
         </div>
     </div>
+@endsection
+@section('foot')
+    <script>
 
-
-</body>
-<script src="{{ asset('js/app.js') }}" <script src="{{ asset('js/app.js') }}"></script>
-
-
-</html>
+    </script>
+@endsection

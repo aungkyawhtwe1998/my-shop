@@ -43,11 +43,13 @@
                                             id="deleteForm{{ $category->id }}">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $category->id }}">
-                                            <button type="button" class="btn btn-sm btn-outline-danger"
-                                                onclick="deleteCategory({{ $category->id }})">Delete</button>
+                                            <button type="button" class="btn btn-sm btn-danger"
+                                                onclick="deleteCategory({{ $category->id }})"><i
+                                                    class="feather-delete"></i></button>
                                         </form>
-                                        <button class="btn btn-outline-warning btn-sm"
-                                            onclick="changeCategoryName({{ $category->id }},'{{ $category->title }}')">Edit</button>
+                                        <button class="btn btn-warning btn-sm"
+                                            onclick="changeCategoryName({{ $category->id }},'{{ $category->title }}')"><i
+                                                class="feather-edit-2"></i></button>
                                     </td>
                                     <td>
                                         <i class="feather-calendar"></i>

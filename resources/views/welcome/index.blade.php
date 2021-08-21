@@ -11,12 +11,15 @@
     </style>
 @endsection
 @section('header')
-    @include('layouts.host-header')
+    <div class="row header">
+        @include('layouts.host-header')
+
+    </div>
 @endsection
 @section('content')
     {{-- home --}}
     <div class="container" id="home">
-        <div class="row min-vh-100 py-5">
+        <div class="row py-5">
             <div class="col-12 col-md-6">
                 <div class="my-3 justify-content-center">
                     <h1 class="text-primary font-weight-bolder">Ecommerce Myanmar</h1>
@@ -48,7 +51,7 @@
 
                     @foreach ($items as $item)
                         <div class="col-12 col-md-3">
-                            <div class="card rounded bg-dark shadow mb-3">
+                            <div class="card my-card m-0 p-0 rounded bg-dark shadow mb-3">
                                 <div class="card-body">
                                     <span class="text-primary font-weight-bold">{{ $item->title }}</span>
                                     <hr>

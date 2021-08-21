@@ -16,5 +16,6 @@ class Post extends Model
 
     public function getPhoto(){
         return $this->hasOne(PostCoverPhoto::class);
-    }
+    }   
+    
 }
