@@ -25,10 +25,12 @@
 
         <div class="row my-3">
             {{-- Left Side bar --}}
-            <div class="col-lg-3">
+            <div class="col-lg-3 d-none d-lg-block">
                 <div class="card blog-card mb-1">
+                    <div class="card-header">Advertise here</div>
                     <div class="card-body">
-                        <h1>Left Side</h1>
+                        <img src="https://www.ctrlclickcast.com/images/your-ad-here.png" style="width: 100%" ;
+                            height="200px;" alt="">
                     </div>
                 </div>
             </div>
@@ -38,72 +40,77 @@
             <div class="col-12 col-lg-6 col-md-8 ">
                 {{-- breadcrumb --}}
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card blog-card">
-                            <x-host-bread-crumb>
-                                <li class="breadcrumb-item"><a href="{{ route('blogs.index') }}">all blog</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">{{ $post->name }}</li>
-                            </x-host-bread-crumb>
-                        </div>
-
+                    <div class="col-12 blog-card rounded mb-1">
+                        <x-host-bread-crumb>
+                            <li class="breadcrumb-item"><a href="{{ route('blogs.index') }}">all blog</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                {{ Str::substr($post->name, 0, 30) }} ...</li>
+                        </x-host-bread-crumb>
                     </div>
                 </div>
                 {{-- end breadcrumb --}}
 
                 {{-- main post --}}
-                <div class="card bg-dark rounded shadow mb-1">
-                    <div class="card-header text-light">Item Detail</div>
-                    <div class="card-body">
-                        <h4 class="text-warning font-weight-bold">{{ $post->name }}</h4>
+                <div class="row">
+                    <div class="card blog-card rounded shadow mb-1">
+                        <div class="card-header text-light">Item Detail</div>
+                        <div class="card-body">
+                            <h4 class="text-warning font-weight-bold">{{ $post->name }}</h4>
 
-                        <span class="badge badge-pill badge-success">
-                            <i class="feather-user"></i>
-                            {{ $post->getUser->name }}
-                        </span>
-                        <span class="badge badge-pill badge-info">
-                            <i class="feather-calendar"></i>
-                            {{ $post->created_at->format('d M Y') }}
-                        </span>
-                        <hr>
-                        <div class="mb-2">
-                            @isset($post->getPhoto)
-                                <div class="cover-thumbnail"
-                                    style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}');">
-                                </div>
-                            @endisset
-                        </div>
-                        <div class="text-light">
-                            <?php
-                            echo html_entity_decode($post->description, ENT_QUOTES);
-                            ?>
+                            <span class="badge badge-pill badge-success">
+                                <i class="feather-user"></i>
+                                {{ $post->getUser->name }}
+                            </span>
+                            <span class="badge badge-pill badge-info">
+                                <i class="feather-calendar"></i>
+                                {{ $post->created_at->format('d M Y') }}
+                            </span>
+                            <span class="badge badge-pill badge-secondary">
+                                <i class="feather-eye"></i>
+                                1.4K
+                            </span>
+                            <hr>
+                            <div class="mb-2">
+                                @isset($post->getPhoto)
+                                    <div class="cover-thumbnail"
+                                        style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}');">
+                                    </div>
+                                @endisset
+                            </div>
+                            <div class="text-light">
+                                <?php
+                                echo html_entity_decode($post->description, ENT_QUOTES);
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {{-- end main post --}}
-                <div class="row">
-                    {{-- comments --}}
-                    <div class="col-12">
-                        <div class="card my-card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div>
-                                        <img src="{{ asset('dashboard/img/user/avatar1.jpg') }}"
-                                            style="width:50px; height: 50px; border-radius: 50%" alt="">
-                                    </div>
-                                    <div class="ml-1">
-                                        <span class="text-primary">Miss Emalia</span>
-                                        <p class="text-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        </p>
-                                    </div>
-                                </div>
 
+                {{-- end main post --}}
+                <div class="row p-1 blog-card rounded">
+                    {{-- comments --}}
+
+                    <div class="col-12">
+                        <h4 class="text-light">Comments</h4>
+                        <div class="card blog-card rounded">
+                            <div class="row p-2">
+                                <div class="col-2">
+                                    <img src="{{ asset('dashboard/img/user/avatar1.jpg') }}"
+                                        style="width:50px; height: 50px; border-radius: 50%" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <span class="text-primary">Miss Emalia</span> <span class="badge badge-primary">1hr
+                                        ago</span>
+                                    <p class="text-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     {{-- comment box --}}
                     <div class="col-12">
-                        <div class="card my-card justify-content-center align-items-center">
-                            <form action="" class="w-50 justify-content-center align-items-center" method="POST">
+                        <div class="card blog-card py-2 mt-1 justify-content-center align-items-center">
+                            <form action="" class="justify-content-center align-items-center" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" name="email" class="form-control my-input" placeholder="Enter email">
@@ -112,10 +119,9 @@
                                     <input type="text" name="name" class="form-control my-input" placeholder="Enter name">
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="message" class="my-input" id="" rows="5"
-                                        placeholder="Enter comment"></textarea>
+                                    <textarea name="message" class="my-input" id="" placeholder="Enter comment"></textarea>
                                 </div>
-                                <button class="btn btn-outline-info">Send</button>
+                                <button class="btn btn-outline-info ">Send</button>
                             </form>
                         </div>
                     </div>
@@ -144,6 +150,21 @@
                                 <div class="card-body">
                                     <div class="rounded show-thumbnail"
                                         style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}'); width:100%; height:200px">
+                                    </div>
+                                    <div>
+                                        <span class="badge badge-pill badge-success">
+                                            <i class="feather-user"></i>
+                                            {{ $post->getUser->name }}
+                                        </span>
+                                        <span class="badge badge-pill badge-info">
+                                            <i class="feather-calendar"></i>
+                                            {{ $post->created_at->format('d M Y') }}
+                                        </span>
+                                        <span class="badge badge-pill badge-secondary">
+                                            <i class="feather-eye"></i>
+                                            1.4K
+                                        </span>
+                                        <hr>
                                     </div>
                                     <div class="my-2 text-left">
                                         <i class="fas fa-blog text-dark text-primary "></i>

@@ -46,7 +46,7 @@
         <div class="row m-2">
 
             @foreach ($posts as $post)
-                <div class="col-12 col-lg-4 col-md-4">
+                <div class="col-12 col-lg-4 col-md-6">
                     <div class="blog-card wow slideInLeft ani-delay-1 p-1 justify-content-center align-content-center">
                         <div class="rounded show-thumbnail"
                             style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}'); width:100%; height:200px">
