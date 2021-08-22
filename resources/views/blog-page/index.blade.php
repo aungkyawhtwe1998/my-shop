@@ -57,20 +57,19 @@
                                 {{ $post->getUser->name }}
                             </span>
                             <span class="badge badge-pill badge-secondary"><i class="fas fa-clock text-light mr-2">
-                                </i>{{ $post->created_at->format('d M Y') }}
+                                </i>{{ $post->created_at->diffForHumans() }}
                             </span>
                         </div>
                         <div class="my-2 text-left">
                             <i class="fas fa-blog text-dark text-primary "></i>
-                            <span class="mytext fw-bold">{{ Str::substr($post->name, 0, 45) }} ... </span>
+                            <span class="text-warning fw-bold">{{ Str::substr($post->name, 0, 45) }} ... </span>
                             <p class="text-justify" style="color: black">
                                 <?php
                                 echo Str::substr(html_entity_decode($post->description, ENT_QUOTES), 0, 150);
                                 ?>
-                                <a class="text-warning"
-                                    href="{{ route('blogs.show', ['category' => $post->category_id, 'id' => $post->id]) }}">...read
+                                <a class="text-primary"
+                                    href="{{ route('blogs.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}">...read
                                     more</a>
-
                             </p>
                         </div>
                     </div>

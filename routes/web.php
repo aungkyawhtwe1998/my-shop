@@ -22,15 +22,21 @@ Route::get('/welcome/{id}','WelcomeController@showItem')->name('welcome-item.sho
 
 //blog page
 // Route::resource('blogs','BlogController' );
-Route::get('/blogs', 'BlogController@index')->name('blogs.index');
-Route::get('/blogs/category/{id}','BlogController@showByCategory')->name('blogs.showbyCategory');
-Route::get('/blogs-post/{category}/{id}','BlogController@show')->name('blogs.show');
+Route::prefix('blogs')->group(function(){
+    Route::get('/', 'BlogController@index')->name('blogs.index');
+    Route::get('/category/{id}','BlogController@showByCategory')->name('blogs.showbyCategory');
+    Route::get('/post/{category}/{id}','BlogController@show')->name('blogs.show');
+    
+    Route::resource('comment', 'CommentController');
+
+});
 
 
 Route::get('/alex', 'WelcomeController@showPortfolio')->name('portfolio');
 
 Route::resource('message', 'MessageController');
 Auth::routes();
+
 
 //Auth middleware
 Route::middleware(["auth","isBanned"])->group(function(){    

@@ -24,9 +24,8 @@
                     <a class="nav-link rounded" href="{{ route('portfolio') }}">About</a>
                 </li>
             </ul>
-            <form class="form-inline d-none d-lg-block justify-content-md-center align-items-center just" action=""
-                method="POST">
-                @csrf
+            <form class="form-inline d-none d-lg-block justify-content-md-center align-items-center just"
+                action="blogs.index" method="get">
                 <div class="form-row d-flex">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>

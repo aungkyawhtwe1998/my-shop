@@ -63,7 +63,7 @@
                             </span>
                             <span class="badge badge-pill badge-info">
                                 <i class="feather-calendar"></i>
-                                {{ $post->created_at->format('d M Y') }}
+                                {{ $post->created_at->diffForHumans() }}
                             </span>
                             <span class="badge badge-pill badge-secondary">
                                 <i class="feather-eye"></i>
@@ -87,47 +87,72 @@
                 </div>
 
                 {{-- end main post --}}
-                <div class="row p-1 blog-card rounded">
+                <div class="row p-1 bg-secondary rounded">
                     {{-- comments --}}
-
                     <div class="col-12">
                         <h4 class="text-light">Comments</h4>
-                        <div class="card blog-card rounded">
-                            <div class="row p-2">
-                                <div class="col-2">
-                                    <img src="{{ asset('dashboard/img/user/avatar1.jpg') }}"
-                                        style="width:50px; height: 50px; border-radius: 50%" alt="">
+                        @isset($post->getComments)
+                            @foreach ($post->getComments as $comment)
+                                <div class="card bg-dark mb-1 rounded">
+                                    <div class="row d-flex p-2 justify-content-center align-items-center">
+                                        <div class="col-2">
+                                            <img src="{{ asset('dashboard/img/user/avatar9.jpg') }}"
+                                                style="width:50px; height: 50px; border-radius: 50%" alt="">
+                                        </div>
+                                        <div class="col-10">
+                                            <span class="text-primary">{{ $comment->user_name }}</span> <span
+                                                class="badge badge-primary">{{ $comment->created_at->diffForHumans() }}
+                                            </span>
+                                            <p class="text-light">{{ $comment->message }}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-10">
-                                    <span class="text-primary">Miss Emalia</span> <span class="badge badge-primary">1hr
-                                        ago</span>
-                                    <p class="text-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+
+                            @endforeach
+
+                        @endisset
+
                     </div>
                     {{-- comment box --}}
                     <div class="col-12">
-                        <div class="card blog-card py-2 mt-1 justify-content-center align-items-center">
-                            <form action="" class="justify-content-center align-items-center" method="POST">
+                        <div class="card bg-secondary py-2 mt-1 justify-content-center align-items-center">
+                            <h4 class="text-light">Write your comment here</h4>
+
+                            <form action="{{ route('comment.store') }}" class="justify-content-center align-items-center"
+                                method="POST">
                                 @csrf
-                                <div class="form-group">
-                                    <input type="text" name="email" class="form-control my-input" placeholder="Enter email">
+                                <input type="hidden" name="post_id" value="{{ $post->id }}" id="">
+                                <div class="form-row mb-2">
+                                    <div class="col">
+                                        <input type="text" name="email" class="form-control my-input"
+                                            placeholder="Enter email">
+                                        @error('email')
+                                            <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                        @enderror
+
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="name" class="form-control my-input"
+                                            placeholder="Enter name">
+                                        @error('name')
+                                            <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control my-input" placeholder="Enter name">
+                                <div class="form-group w-100">
+                                    <textarea name="message" class="my-input" cols="50" rows="5" id=""
+                                        placeholder="Enter comment"></textarea>
+                                    @error('message')
+                                        <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
-                                <div class="form-group">
-                                    <textarea name="message" class="my-input" id="" placeholder="Enter comment"></textarea>
-                                </div>
-                                <button class="btn btn-outline-info ">Send</button>
+                                <button class="btn btn-outline-info">Send</button>
                             </form>
                         </div>
                     </div>
 
                 </div>
-                {{-- comment box --}}
 
                 {{-- end comment box --}}
             </div>
@@ -158,7 +183,7 @@
                                         </span>
                                         <span class="badge badge-pill badge-info">
                                             <i class="feather-calendar"></i>
-                                            {{ $post->created_at->format('d M Y') }}
+                                            {{ $post->created_at->diffForHumans() }}
                                         </span>
                                         <span class="badge badge-pill badge-secondary">
                                             <i class="feather-eye"></i>
@@ -170,7 +195,7 @@
                                         <i class="fas fa-blog text-dark text-primary "></i>
                                         <span class="mytext fw-bold">{{ Str::substr($post->name, 0, 45) }} ...
                                             <a
-                                                href="{{ route('blogs.show', ['category' => $post->category_id, 'id' => $post->id]) }}">Read
+                                                href="{{ route('blogs.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}">Read
                                                 more
                                             </a>
                                         </span>
