@@ -271,7 +271,9 @@
                                         <?php
                                         echo Str::substr(html_entity_decode($post->description, ENT_QUOTES), 0, 70);
                                         ?>
-                                        <a href="{{ route('blogs.show', $post->id) }}">...read more</a>
+                                        <a
+                                            href="{{ route('blogs.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}">...read
+                                            more</a>
                                     </p>
                                 </div>
                             </div>

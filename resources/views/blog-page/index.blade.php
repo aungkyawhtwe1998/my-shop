@@ -35,6 +35,7 @@
                 {{-- <label for="category_id" class="font-weight-bold text-warning">Choose
                     Categories</label> --}}
                 <select name="category" class="custom-select" onchange="window.location.href=this.value;">
+                    <option value="{{ route('blogs.index') }}">All</option>
                     @foreach ($categories as $category)
                         <option value="{{ route('blogs.showbyCategory', $category->id) }}">{{ $category->title }}
                         </option>
