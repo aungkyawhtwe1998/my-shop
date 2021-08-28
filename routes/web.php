@@ -32,7 +32,7 @@ Route::prefix('blogs')->group(function(){
 });
 
 
-Route::get('/alex', 'WelcomeController@showPortfolio')->name('portfolio');
+Route::get('/about', 'WelcomeController@showPortfolio')->name('portfolio');
 
 Route::resource('message', 'MessageController');
 Auth::routes();

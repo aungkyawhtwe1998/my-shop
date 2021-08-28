@@ -77,14 +77,15 @@
                 </div>
             @endforeach
         </div>
+    </div>
 
-    @endsection
-    @section('footer')
-        <section class="container" id="contact">
-            <div class="row">
-                @include('layouts.host-footer')
-            </div>
-        </section>
-    @endsection
-    @section('foot')
-    @endsection
+@endsection
+@section('footer')
+    <section class="container" id="contact">
+        <div class="row">
+            @include('layouts.host-footer')
+        </div>
+    </section>
+@endsection
+@section('foot')
+@endsection

@@ -28,7 +28,7 @@
     {{-- footer --}}
     @yield('footer')
 
-    
+
     {{-- end footer --}}
     <script src="{{ asset('portfolio/js/jquery.js') }}"></script>
     <script src="{{ asset('portfolio/slick/slick.min.js') }}"></script>

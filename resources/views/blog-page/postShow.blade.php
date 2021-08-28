@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-12 blog-card rounded mb-1">
                         <x-host-bread-crumb>
-                            <li class="breadcrumb-item"><a href="{{ route('blogs.index') }}">all blog</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('welcome') }}">all blog</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 {{ Str::substr($post->name, 0, 30) }} ...</li>
                         </x-host-bread-crumb>
@@ -87,8 +87,9 @@
                 </div>
 
                 {{-- end main post --}}
+
+                {{-- comments --}}
                 <div class="row p-1 bg-secondary rounded">
-                    {{-- comments --}}
                     <div class="col-12">
                         <h4 class="text-light">Comments</h4>
                         @isset($post->getComments)
@@ -108,51 +109,49 @@
                                         </div>
                                     </div>
                                 </div>
-
                             @endforeach
-
                         @endisset
-
                     </div>
-                    {{-- comment box --}}
+                </div>
+
+                {{-- comment box --}}
+
+                {{-- write comment --}}
+
+                <div class="row mt-1 p-1 bg-secondary rounded">
                     <div class="col-12">
-                        <div class="card bg-secondary py-2 mt-1 justify-content-center align-items-center">
-                            <h4 class="text-light">Write your comment here</h4>
-
-                            <form action="{{ route('comment.store') }}" class="justify-content-center align-items-center"
-                                method="POST">
-                                @csrf
-                                <input type="hidden" name="post_id" value="{{ $post->id }}" id="">
-                                <div class="form-row mb-2">
-                                    <div class="col">
-                                        <input type="text" name="email" class="form-control my-input"
-                                            placeholder="Enter email">
-                                        @error('email')
-                                            <small class="font-weight-bold text-danger">{{ $message }}</small>
-                                        @enderror
-
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" name="name" class="form-control my-input"
-                                            placeholder="Enter name">
-                                        @error('name')
-                                            <small class="font-weight-bold text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
+                        <h4 class="text-light">Write your comment here</h4>
+                        <form action="{{ route('comment.store') }}" class="" method="POST">
+                            @csrf
+                            <input type="hidden" name="post_id" value="{{ $post->id }}" id="">
+                            <div class="row d-flex mb-2">
+                                <div class="col-12 col-md-6 col-lg-6 mb-1">
+                                    <input type="text" name="email" class="form-control my-input" placeholder="Enter email">
+                                    @error('email')
+                                        <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
-                                <div class="form-group w-100">
-                                    <textarea name="message" class="my-input" cols="50" rows="5" id=""
+                                <div class="col-12 col-md-6 col-lg-6 mb-1">
+                                    <input type="text" name="name" class="form-control my-input" placeholder="Enter name">
+                                    @error('name')
+                                        <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="my-input" rows="5" id=""
                                         placeholder="Enter comment"></textarea>
                                     @error('message')
                                         <small class="font-weight-bold text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <button class="btn btn-outline-info">Send</button>
-                            </form>
-                        </div>
-                    </div>
+                            </div>
 
+                            <button class="btn btn-outline-info">Send</button>
+                        </form>
+                    </div>
                 </div>
+
+                {{-- end write comment --}}
 
                 {{-- end comment box --}}
             </div>

@@ -5,22 +5,54 @@
 @section('style')
     <style>
         body {
-            background-color: black;
+            /* background-color: black; */
         }
 
     </style>
 @endsection
 @section('header')
-    <div class="row header">
+    <div class="row header mt-0">
         @include('layouts.host-header')
-
     </div>
 @endsection
 @section('content')
     {{-- home --}}
-    <div class="container" id="home">
+    <div class="container-fluid bg-dark" id="home">
         <div class="row py-5">
-            <div class="col-12 col-md-6">
+            <div class="container align-items-center justify-content-center">
+                <div class="row mt-5 pt-3">
+
+                    <div class="col-12 text-center ">
+                        <div class="">
+                            <span class="h1 text-primary font-weight-bold">Alex</span><span
+                                class="h2 text-light">LifeStyle</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row justify-content-between">
+                        <div class="">
+                            {{ $posts->appends(Request::all())->links() }}
+                        </div>
+                        <div class="">
+                            <select name="category" class="custom-select" onchange="window.location.href=this.value;">
+                                <option value="{{ route('blogs.index') }}">All</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ route('blogs.showbyCategory', $category->id) }}">
+                                        {{ $category->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        {{-- <label for="category_id" class="font-weight-bold text-warning">Choose
+                            Categories</label> --}}
+
+                    </div>
+
+
+                </div>
+            </div>
+            {{-- <div class="col-12 col-md-6">
                 <div class="my-3 justify-content-center">
                     <h1 class="text-primary font-weight-bolder">Ecommerce Myanmar</h1>
                     <p class="font-weight-bold text-light">Lorem ipsum dolor sit amet consectetur adipisicing
@@ -33,13 +65,56 @@
                     <a href="{{ route('register') }}" class="btn btn-primary">Register as Seller</a>
                     <a href="#item" class="btn btn-outline-primary">Explore Items</a>
                 </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <img src="{{ asset('dashboard/img/item/ecommerce.svg') }}" class="w-75" alt="">
-            </div>
+            </div> --}}
+            {{--  --}}
         </div>
+
     </div>
     {{-- end home --}}
+
+    {{-- blogs --}}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <div class="row m-2">
+                    @foreach ($posts as $post)
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <div
+                                class="card shadow rounded mb-1 wow slideInLeft ani-delay-1 p-1 justify-content-center align-content-center">
+                                <div class="rounded show-thumbnail"
+                                    style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}'); width:100%; height:200px">
+                                </div>
+                                <div class="">
+                                    <span class="badge badge-pill badge-success">
+                                        <i class="feather-user"></i>
+                                        {{ $post->getUser->name }}
+                                    </span>
+                                    <span class="badge badge-pill badge-secondary"><i class="fas fa-clock text-light mr-2">
+                                        </i>{{ $post->created_at->diffForHumans() }}
+                                    </span>
+                                </div>
+                                <div class="my-2 text-left">
+
+                                    <span class="h5 font-weight-bold">{{ $post->name }}</span>
+                                    <p class="text-justify" style="color: black">
+                                        <?php
+                                        echo Str::substr(html_entity_decode($post->description, ENT_QUOTES), 0, 150);
+                                        ?>
+                                        <a class="text-primary"
+                                            href="{{ route('blogs.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}">...read
+                                            more</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    {{-- end blogs --}}
 
     {{-- item --}}
     <div class="container-fluid" id="item">
