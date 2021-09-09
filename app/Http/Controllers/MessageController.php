@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactFormMail;
 use App\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -42,6 +44,8 @@ class MessageController extends Controller
             'name'=>'required',
             'message'=>'required'
         ]);
+
+        Mail::to('test@test.com')->to(new ContactFormMail) ;
         $message = new Message();
         $message->email = $request->email;
         $message->name = $request->name;
