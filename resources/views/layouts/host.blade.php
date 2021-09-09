@@ -35,7 +35,7 @@
     <script src="{{ asset('portfolio/wow/wow.js') }}"></script>
     <script src="{{ asset('portfolio/way_point/jquery.waypoints.js') }}"></script>
     <script src="{{ asset('portfolio/js/app.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}" <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     @yield('foot')
     @include('layouts.toasts')

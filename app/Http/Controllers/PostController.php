@@ -35,7 +35,7 @@ class PostController extends Controller
         $categories = PostCategory::all();
         return view('post-manager.add-post',compact('categories'));
     }
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -44,7 +44,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
+
     public function store(Request $request)
     {
         $request->validate([
@@ -56,7 +56,7 @@ class PostController extends Controller
         if($request->hasFile("photo")){
             $newFileName = uniqid()."_item.".$request->file('photo')->getClientOriginalExtension();
             $img = Image::make($request->file('photo'));
-            // $img->fit(300,300);                
+            // $img->fit(300,300);
             // $file->storeAs($dir,$newFileName);
             $img->save("storage/post-cover/".$newFileName);
         }
@@ -110,15 +110,15 @@ class PostController extends Controller
     {
         $request->validate([
             'title'=>'required|min:10|max:255',
-            'description'=>'required|min:30',   
-            'category_id'=>'required'            
+            'description'=>'required|min:30',
+            'category_id'=>'required'
         ]);
         $post->name = $request->title;
         $post->description = $request->description;
         $post->category_id = $request->category_id;
         $post->update();
         return redirect()->route('post.index')->with("toast",['icon'=>'success','title'=>$request->title.' is updated']);
-    }   
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -134,7 +134,7 @@ class PostController extends Controller
                 Storage::delete($dir.$p->location);
             }
             $toDel = $post->getPhotos->pluck('id');
-            ItemPhoto::destroy($toDel);                   
+            ItemPhoto::destroy($toDel);
         }
         $post->delete();
         return redirect()->route('post.index')->with("toast",['icon'=>'success','title'=>$post->title." has been deleted"]);

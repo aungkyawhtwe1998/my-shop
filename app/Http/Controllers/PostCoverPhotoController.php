@@ -93,7 +93,7 @@ class PostCoverPhotoController extends Controller
     public function destroy(PostCoverPhoto $postCoverPhoto)
     {
         $dir = "public/post-cover/";
-        Storage::delete($dir.$postCoverPhoto->location);            
+        Storage::delete($dir.$postCoverPhoto->location);
         $postCoverPhoto->delete();
         return redirect()->back()->with("toast",['icon'=>'success','title'=>"Photo has been deleted"]);
     }

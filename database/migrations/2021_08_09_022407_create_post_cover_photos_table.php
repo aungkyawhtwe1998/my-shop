@@ -15,7 +15,7 @@ class CreatePostCoverPhotosTable extends Migration
     {
         Schema::create('post_cover_photos', function (Blueprint $table) {
             $table->id();
-            $table->integer('item_id');
+            $table->integer('post_id');
             $table->string('location');
             $table->timestamps();
         });

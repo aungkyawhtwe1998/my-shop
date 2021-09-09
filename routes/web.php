@@ -26,7 +26,7 @@ Route::prefix('blogs')->group(function(){
     Route::get('/', 'BlogController@index')->name('blogs.index');
     Route::get('/category/{id}','BlogController@showByCategory')->name('blogs.showbyCategory');
     Route::get('/post/{category}/{id}','BlogController@show')->name('blogs.show');
-    
+
     Route::resource('comment', 'CommentController');
 
 });
@@ -39,9 +39,10 @@ Auth::routes();
 
 
 //Auth middleware
-Route::middleware(["auth","isBanned"])->group(function(){    
+Route::middleware(["auth","isBanned"])->group(function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+
     Route::prefix('dashboard')->group(function(){
-        Route::get('/home', 'HomeController@index')->name('home');
 //Items
         Route::resource('item', 'ItemController');
         Route::resource('item-photo', 'ItemPhotoController');
@@ -60,15 +61,15 @@ Route::middleware(["auth","isBanned"])->group(function(){
             Route::post('/cateogry-manager-add','CategoryController@store')->name('catergory-manager.addCategory');
             Route::post('/cateogry-manager-delete/{id}','CategoryController@destroy')->name('catergory-manager.destroy');
             Route::post('/cateogry-manager-edit','CategoryController@update')->name('catergory-manager.update');
-        
+
             Route::resource('post-category', 'PostCategoryController');
             Route::post('/post-category-edit','PostCategoryController@update')->name('post-category.update');
-    
+
          });
 
         //Post
         Route::resource('post', 'PostController');
-        Route::resource('post-cover-photo', 'PostCoverPhotoController'); 
+        Route::resource('post-cover-photo', 'PostCoverPhotoController');
 
         //profile routes
         Route::prefix('profile')->group(function(){
@@ -82,6 +83,6 @@ Route::middleware(["auth","isBanned"])->group(function(){
             Route::post("/update-user-info","ProfileController@updateInfo")->name("profile.update.info");
 
         });
-    });   
-    
+    });
+
 });
