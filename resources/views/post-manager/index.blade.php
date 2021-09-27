@@ -42,9 +42,9 @@
                             @foreach ($posts as $post)
                                 <tr>
                                     <td>{{ $post->id }}</td>
-                                    <td>{{ Str::substr($post->name, 0, 30) }}</td>
+                                    <td>{{ $post->name }}</td>
                                     <td>
-                                        <?php echo Str::substr(html_entity_decode($post->description, ENT_QUOTES), 0, 50); ?> ...
+                                        {!!substr(html_entity_decode($post->description), 0, 200)!!}
                                     </td>
                                     <td>{{ $post->getCategoryName->title }}</td>
                                     <td>{{ $post->getUser->name }}</td>

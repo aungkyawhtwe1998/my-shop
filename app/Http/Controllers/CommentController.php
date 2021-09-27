@@ -27,7 +27,7 @@ class CommentController extends Controller
         $comment->message = $request->message;
         $comment->post_id = $request->post_id;
         $comment->save();
-        return redirect()->back()->with("toast",['icon'=>'success',"Successful"]);
+        return redirect()->back()->with("toast",['icon'=>'success','title'=>"comment has been added"]);
 
     }
 

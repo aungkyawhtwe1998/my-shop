@@ -25,7 +25,7 @@
                     <div class="col-12 text-center ">
                         <div class="">
                             <span class="h1 text-primary font-weight-bold">Alex</span><span
-                                class="h2 text-light">LifeStyle</span>
+                                class="h2 text-light"> - Blog</span>
                         </div>
                     </div>
                 </div>
@@ -95,12 +95,9 @@
                                     </span>
                                 </div>
                                 <div class="my-2 text-left">
-
-                                    <span class="h5 font-weight-bold">{{ $post->name }}</span>
+                                    <span class="h5 font-weight-bold">{!!html_entity_decode($post->name)!!}</span>
                                     <p class="text-justify" style="color: black">
-                                        <?php
-                                        echo Str::substr(html_entity_decode($post->description, ENT_QUOTES), 0, 150);
-                                        ?>
+                                        {!!substr(html_entity_decode($post->description), 0, 300)!!}
                                         <a class="text-primary"
                                             href="{{ route('blogs.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}">...read
                                             more</a>
@@ -118,7 +115,7 @@
     {{-- end blogs --}}
 
     {{-- item --}}
-    <div class="container-fluid" id="item">
+    <div class="container-fluid bg-dark" id="item">
         <div class="row">
             <div class="col-12">
                 <h2 class="mt-3 text-primary text-center font-weight-bolder">Find Items</h2>
@@ -127,7 +124,7 @@
 
                     @foreach ($items as $item)
                         <div class="col-12 col-md-3">
-                            <div class="card my-card m-0 p-0 rounded bg-dark shadow mb-3">
+                            <div class="card my-card m-0 p-0 rounded bg-secondary shadow mb-3">
                                 <div class="card-body">
                                     <span class="text-primary font-weight-bold">{{ $item->title }}</span>
                                     <hr>
@@ -197,7 +194,7 @@
     </div>
 @endsection
 @section('footer')
-<div class="container-fluid bg-dark">
+<div class="container-fluid bg-secondary">
     <div class="row">
         <div class="container-fluid">
             <div class="row mt-5 pt-3 align-items-center justify-content-center">

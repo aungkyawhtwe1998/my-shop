@@ -23,7 +23,7 @@ class WelcomeController extends Controller
             $searchKey = request()->search;
             $query->where("name","LIKE","%$searchKey%")->orWhere("description","LIKE","%$searchKey%");
             //Eager Loading for sql DB
-        })->orderBy("id","desc")->paginate(4);
+        })->orderBy("id","desc")->paginate(6);
         $categories = PostCategory::all();
 
         return view('welcome.index',compact('posts','categories','items','categories'));

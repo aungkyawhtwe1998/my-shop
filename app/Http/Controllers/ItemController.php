@@ -63,7 +63,7 @@ class ItemController extends Controller
             foreach($request->file('photo') as $file){
                 $newFileName = uniqid()."_item.".$file->getClientOriginalExtension();
                 $img = Image::make($file);
-                // $img->fit(300,300);                
+                // $img->fit(300,300);
                 array_push($fileNameArr, $newFileName);
                 // $file->storeAs($dir,$newFileName);
                 $img->save("storage/items/".$newFileName);
@@ -87,7 +87,7 @@ class ItemController extends Controller
                 $item_photo->location = $f;
                 $item_photo->save();
             }
-            
+
         }
         return redirect()->route('item.index')->with("toast",['icon'=>'success','title'=>$item->title." has been saved"]);
 
@@ -134,7 +134,7 @@ class ItemController extends Controller
             'category_id'=>'required',
             'original_price'=>"required",
             'promotion_price'=>"required",
-            'stock'=>'required'           
+            'stock'=>'required'
         ]);
         $item->title = $request->title;
         $item->description = $request->description;
@@ -166,7 +166,7 @@ class ItemController extends Controller
         //     $item->delete();
         //     return redirect()->route('item.index')->with("toast",['icon'=>'success','title'=>$item->title." has been deleted"]);
         // }
-        // return abort(404);    
+        // return abort(404);
 
         if(isset($item->getPhotos)){
             $dir = "public/items/";
@@ -174,7 +174,7 @@ class ItemController extends Controller
                 Storage::delete($dir.$p->location);
             }
             $toDel = $item->getPhotos->pluck('id');
-            ItemPhoto::destroy($toDel);                   
+            ItemPhoto::destroy($toDel);
         }
         $item->delete();
         return redirect()->route('item.index')->with("toast",['icon'=>'success','title'=>$item->title." has been deleted"]);

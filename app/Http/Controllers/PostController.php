@@ -21,7 +21,7 @@ class PostController extends Controller
     {
         $posts = Post::when(Auth::user()->role!=0,function($query){
             $query->where('user_id',Auth::id());
-        })->orderBy("id","desc")->paginate(5);
+        })->orderBy("id","desc")->paginate(6);
         return view('post-manager.index',compact('posts'));
     }
 
@@ -109,15 +109,15 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title'=>'required|min:10|max:255',
-            'description'=>'required|min:30',
-            'category_id'=>'required'
+            'name'=>'required',
+            'description'=>'required',
+            'category_id'=>'required',
         ]);
-        $post->name = $request->title;
+        $post->name = $request->name;
         $post->description = $request->description;
         $post->category_id = $request->category_id;
         $post->update();
-        return redirect()->route('post.index')->with("toast",['icon'=>'success','title'=>$request->title.' is updated']);
+        return redirect()->route('post.index')->with("toast",['icon'=>'success','title'=>$request->name.' is updated']);
     }
 
     /**
