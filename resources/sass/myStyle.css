@@ -218,7 +218,7 @@ tr td {
     background-size: cover;
 }
 
-/*
+
 .nav-brand {
     background: white;
     position: sticky;
@@ -242,7 +242,7 @@ tr td {
     padding: 15px !important;
 }
 
-.nav-link {
+/* .nav-link {
     border-radius: var(--border-radius);
     text-align: center;
     padding: 0.5rem !important;
@@ -259,8 +259,8 @@ tr td {
     border: 2px solid var(--primary);
     border-radius: var(--border-radius);
     padding: 5px;
-}
-*/
+} */
+
 
 .menu-title {
     font-weight: bold;
