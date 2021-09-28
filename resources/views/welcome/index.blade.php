@@ -181,7 +181,7 @@
 @section('footer')
 <div class="container-fluid footer">
     <div class="row">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row mt-5 pt-3 align-items-center justify-content-center">
                 <div class="col-12 text-center">
                     <h2 class="text-primary font-weight-bolder">Contact or suggest me</h2>
