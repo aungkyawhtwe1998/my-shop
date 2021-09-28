@@ -213,9 +213,9 @@
     <br>
 @endsection
 @section('footer')
-    <div class="container">
+    <div class="container-fluid footer">
         <div class="row">
-            <footer class="col-12 footer">
+            <footer class="col-12">
                 <div class="container">
                     <div class="row my-3 align-items-center justify-content-center ">
                         <div class="col-12 col-lg-6 ">

@@ -31,9 +31,6 @@ Route::prefix('blogs')->group(function(){
 
 });
 
-
-Route::get('/about', 'WelcomeController@showPortfolio')->name('portfolio');
-
 Route::resource('message', 'MessageController');
 Auth::routes();
 

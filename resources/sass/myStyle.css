@@ -21,11 +21,11 @@ html {
     scroll-behavior: smooth;
 }
 
-.content {
+/*.content {
     background: var(--primary-soft);
     overflow: scroll;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .075) inset;
-}
+}*/
 
 .header {
     position: sticky;
@@ -82,7 +82,7 @@ html {
     border-radius: var(--border-radius);
 }
 
-/* 
+/*
 .card {
     color: var(--text);
     background-color: var(--card) !important;
@@ -184,7 +184,7 @@ table {
     font-weight: bold !important;
 }
 
-/* 
+/*
 th {
     color: var(--header) !important;
 } */
@@ -218,6 +218,7 @@ tr td {
     background-size: cover;
 }
 
+/*
 .nav-brand {
     background: white;
     position: sticky;
@@ -259,6 +260,7 @@ tr td {
     border-radius: var(--border-radius);
     padding: 5px;
 }
+*/
 
 .menu-title {
     font-weight: bold;
@@ -316,5 +318,8 @@ tr td {
         display: block;
     }
 }
-
+.footer{
+    background-color:var(--dark) ;
+    color: white;
+}
 @media screen and (max-width: 480px) {}
