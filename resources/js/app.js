@@ -9,6 +9,17 @@ $(".hide-sidebar-btn").click(function() {
     });
 });
 
+$(".navbar-toggler").click(function () {
+    let result = $(".navbar-collapse").hasClass("show");
+    console.log(result);
+    if (result) {
+        $(".menu-icon").removeClass("fa-times").addClass("fa-bars");
+    } else {
+        $(".menu-icon").removeClass("fa-bars").addClass("fa-times");
+
+    }
+});
+
 function go(url) {
     setTimeout(function() {
         location.href = `${url}`;

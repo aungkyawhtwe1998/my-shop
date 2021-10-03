@@ -40470,6 +40470,16 @@ $(".hide-sidebar-btn").click(function () {
     marginLeft: "-100%"
   });
 });
+$(".navbar-toggler").click(function () {
+  var result = $(".navbar-collapse").hasClass("show");
+  console.log(result);
+
+  if (result) {
+    $(".menu-icon").removeClass("fa-times").addClass("fa-bars");
+  } else {
+    $(".menu-icon").removeClass("fa-bars").addClass("fa-times");
+  }
+});
 
 function go(url) {
   setTimeout(function () {

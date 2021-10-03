@@ -16,11 +16,7 @@
     @yield('header')
 
     {{-- Nav bar --}}
-    {{-- <div class="container-fluid">
-        <div class="row">
-            @include('layouts.host-header')
-        </div>
-    </div> --}}
+
     {{-- end Nav Bar --}}
 
     @yield('content')

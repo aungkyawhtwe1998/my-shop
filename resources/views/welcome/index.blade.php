@@ -11,20 +11,13 @@
 @endsection
 @section('content')
     {{-- home --}}
-    <div class="container-fluid " >
+    <div class="container-fluid" >
         <div class="row py-5">
-
             <div class="container align-items-center justify-content-center">
-                <div class="row mt-5 pt-3">
-
-                    <div class="col-12 text-center ">
-                        <div class="">
-                            <span class="h1 text-primary font-weight-bold">Alex</span><span
-                                class="h2 text-dark"> - Blog</span>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-12">
+                    <div class="text-center mt-5 pt-3">
+                        <span class="h1 text-primary font-weight-bold">Alex</span><span class="h2 text-dark"> - Blog</span>
+                    </div>
                     <div class="row justify-content-between">
                         <div class="">
                             {{ $posts->appends(Request::all())->links() }}
@@ -39,15 +32,9 @@
                                 @endforeach
                             </select>
                         </div>
-                        {{-- <label for="category_id" class="font-weight-bold text-warning">Choose
-                            Categories</label> --}}
-
                     </div>
-
-
                 </div>
             </div>
-
         </div>
 
     </div>
@@ -61,7 +48,7 @@
                     @foreach ($posts as $post)
                         <div class="col-12 col-lg-4 col-md-6">
                             <div
-                                class="card shadow rounded mb-2 wow slideInLeft ani-delay-1 p-1 justify-content-center align-content-center">
+                                class="blog-card shadow rounded mb-2 wow slideInLeft ani-delay-1 p-1 justify-content-center align-content-center">
                                 <div class="rounded show-thumbnail"
                                     style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}'); width:100%; height:200px">
                                 </div>
@@ -77,11 +64,11 @@
                                 <div class="my-2 text-left">
                                     <span class="h5 font-weight-bold">{!!html_entity_decode($post->name)!!}</span>
                                     <p class="text-justify" style="color: black">
-                                        {!!substr(html_entity_decode($post->description), 0, 300)!!}
-                                        <a class="text-primary"
-                                            href="{{ route('blogs.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}">...read
-                                            more</a>
+                                        {!!substr(html_entity_decode($post->description), 0, 250)!!}
                                     </p>
+                                    <form action="{{ route('blogs.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}" method="get">
+                                        <button class="btn btn-secondary btn-sm" type="submit">Read More</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -89,8 +76,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     {{-- end blogs --}}
 

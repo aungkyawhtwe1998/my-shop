@@ -5,12 +5,7 @@
 @endsection
 
 @section('style')
-    <style>
-        body {
-            background-color: black;
-        }
 
-    </style>
 @endsection
 
 @section('header')
@@ -26,7 +21,7 @@
         <div class="row my-3">
             {{-- Left Side bar --}}
             <div class="col-lg-3 d-none d-lg-block">
-                <div class="card blog-card mb-1">
+                <div class="card mb-1">
                     <div class="card-header">Advertise here</div>
                     <div class="card-body">
                         <img src="https://www.ctrlclickcast.com/images/your-ad-here.png" style="width: 100%" ;
@@ -40,7 +35,7 @@
             <div class="col-12 col-lg-6 col-md-8 ">
                 {{-- breadcrumb --}}
                 <div class="row">
-                    <div class="col-12 blog-card rounded mb-1">
+                    <div class="col-12 rounded mb-1">
                         <x-host-bread-crumb>
                             <li class="breadcrumb-item"><a href="{{ route('welcome') }}">all blog</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
@@ -52,10 +47,10 @@
 
                 {{-- main post --}}
                 <div class="row">
-                    <div class="card blog-card rounded shadow mb-1">
-                        <div class="card-header text-light">Item Detail</div>
+                    <div class="card rounded shadow mb-1">
+                        <div class="card-header">Item Detail</div>
                         <div class="card-body">
-                            <h4 class="text-warning font-weight-bold">{{ $post->name }}</h4>
+                            <h4 class="text-primary font-weight-bold">{{ $post->name }}</h4>
 
                             <span class="badge badge-pill badge-success">
                                 <i class="feather-user"></i>
@@ -77,11 +72,9 @@
                                     </div>
                                 @endisset
                             </div>
-                            <div class="text-light">
-                                <?php
-                                echo html_entity_decode($post->description, ENT_QUOTES);
-                                ?>
-                            </div>
+                            <p >
+                                {!!html_entity_decode($post->description)!!}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -89,12 +82,12 @@
                 {{-- end main post --}}
 
                 {{-- comments --}}
-                <div class="row p-1 bg-secondary rounded">
+                <div class="row p-1 rounded">
                     <div class="col-12">
-                        <h4 class="text-light">Comments</h4>
+                        <h4>Comments</h4>
                         @isset($post->getComments)
                             @foreach ($post->getComments as $comment)
-                                <div class="card bg-dark mb-1 rounded">
+                                <div class="card mb-1 rounded">
                                     <div class="row d-flex p-2 justify-content-center align-items-center">
                                         <div class="col-2">
                                             <img src="{{ asset('dashboard/img/user/avatar9.jpg') }}"
@@ -117,28 +110,27 @@
                 {{-- comment box --}}
 
                 {{-- write comment --}}
-
-                <div class="row mt-1 p-1 bg-secondary rounded">
+                <div class="row mt-1 p-1 rounded">
                     <div class="col-12">
-                        <h4 class="text-light">Write your comment here</h4>
+                        <h4>Write your comment here</h4>
                         <form action="{{ route('comment.store') }}" class="" method="POST">
                             @csrf
                             <input type="hidden" name="post_id" value="{{ $post->id }}" id="">
                             <div class="row d-flex mb-2">
-                                <div class="col-12 col-md-6 col-lg-6 mb-1">
-                                    <input type="text" name="email" class="form-control my-input" placeholder="Enter email">
+                                <div class="col-12 col-md-6 col-lg-6 mb-2">
+                                    <input type="text" name="email" class="form-control " placeholder="Enter email">
                                     @error('email')
                                         <small class="font-weight-bold text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="col-12 col-md-6 col-lg-6 mb-1">
-                                    <input type="text" name="name" class="form-control my-input" placeholder="Enter name">
+                                <div class="col-12 col-md-6 col-lg-6 mb-2">
+                                    <input type="text" name="name" class="form-control" placeholder="Enter name">
                                     @error('name')
                                         <small class="font-weight-bold text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col-12">
-                                    <textarea name="message" class="my-input" rows="5" id=""
+                                    <textarea name="message" class="form-control" rows="5" id=""
                                         placeholder="Enter comment"></textarea>
                                     @error('message')
                                         <small class="font-weight-bold text-danger">{{ $message }}</small>
@@ -146,7 +138,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-outline-info">Send</button>
+                            <button class="btn btn-primary">Send</button>
                         </form>
                     </div>
                 </div>
@@ -161,8 +153,8 @@
             <div class="col-lg-3 col-md-4 p-1">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card blog-card p-2">
-                            <div class="text-light">Articles, you may like</div>
+                        <div class="card p-2">
+                            <h5>Articles, you may like</h5>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
     --orange: #e66724;
     --teal: #009278;
     --light: #d9dad7;
-    --border-radius: 0.5rem;
+    --border-radius: 0.9rem;
 }
 
 body {
@@ -51,14 +51,10 @@ html {
 }
 
 .blog-card {
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.322);
-    border-radius: var(--border-radius);
-    background: rgba(255, 255, 255, .1) !important;
-    overflow: hidden;
-    backdrop-filter: blur(50%);
-    transition: 0.4s;
+    border-right: var(--border-radius);
     margin-bottom: 5px;
-    color: var(--light);
+    transition: 0.4s;
+
 }
 
 .my-card:hover {
@@ -66,7 +62,7 @@ html {
 }
 
 .blog-card:hover {
-    transform: scale(0.98);
+    background-color: var(--text);
 }
 
 /* Card */
@@ -242,15 +238,17 @@ tr td {
     padding: 15px !important;
 }
 
-/* .nav-link {
+ .nav-link {
     border-radius: var(--border-radius);
     text-align: center;
     padding: 0.5rem !important;
-    color: var(--light) !important;
+    color: var(--primary) !important;
+     transition: 0.4s;
 }
 
 .nav-link:hover {
-    border: 2px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--text) !important;
     border-radius: var(--border-radius);
     padding: 5px;
 }
@@ -259,7 +257,7 @@ tr td {
     border: 2px solid var(--primary);
     border-radius: var(--border-radius);
     padding: 5px;
-} */
+}
 
 
 .menu-title {
@@ -317,9 +315,31 @@ tr td {
         overflow-x: auto;
         display: block;
     }
+    .nav-link {
+        border-radius: var(--border-radius);
+        text-align: center;
+        padding: 0.5rem !important;
+        color: var(--primary) !important;
+        transition: 0.4s;
+    }
+
+    .nav-link:hover {
+        background-color: var(--primary);
+        color: var(--text) !important;
+        border-radius: var(--border-radius);
+        padding: 5px;
+    }
+
+    .nav-link.current-section {
+        border: 2px solid var(--primary);
+        border-radius: var(--border-radius);
+        padding: 5px;
+    }
 }
 .footer{
     background-color:var(--dark) ;
     color: white;
 }
-@media screen and (max-width: 480px) {}
+@media screen and (max-width: 720px) {
+
+}
