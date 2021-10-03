@@ -19,19 +19,16 @@ class BlogController extends Controller
             //Eager Loading for sql DB
         })->orderBy("id","desc")->paginate(4);
         $categories = PostCategory::all();
-        return view('blog-page.index',compact('posts','categories'));
+        return view('welcome.index',compact('posts','categories'));
     }
-   
-
-
-    public function showByCategory($id){
+    /*public function showByCategory($id){
         $categories = PostCategory::all();
         $posts = Post::orderBy("id","desc")->where('category_id',$id)->paginate(4);
         return view('blog-page.index',compact('posts','categories'));
-    } 
+    }*/
 
     public function show($category, $id)
-    {        
+    {
         $post = Post::find($id);
         $posts = Post::orderBy('id','desc')->where('id','<>',$id)->where('category_id','=',$post->category_id)->limit(3)->get();
         // return $category;

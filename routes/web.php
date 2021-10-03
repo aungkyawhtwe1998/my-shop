@@ -18,15 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 //welcome page
 Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/welcome/category/{id}','WelcomeController@showByCategory')->name('welcome.showByCategory');
 Route::get('/welcome/{id}','WelcomeController@showItem')->name('welcome-item.show');
+Route::get('/post/{category}/{id}','WelcomeController@show')->name('welcome.show');
 
 //blog page
 // Route::resource('blogs','BlogController' );
 Route::prefix('blogs')->group(function(){
     Route::get('/', 'BlogController@index')->name('blogs.index');
-    Route::get('/category/{id}','BlogController@showByCategory')->name('blogs.showbyCategory');
-    Route::get('/post/{category}/{id}','BlogController@show')->name('blogs.show');
-
+//    Route::get('/post/{category}/{id}','BlogController@show')->name('blogs.show');
+//    Route::get('/category/{id}','BlogController@showByCategory')->name('blogs.showByCategory');
     Route::resource('comment', 'CommentController');
 
 });

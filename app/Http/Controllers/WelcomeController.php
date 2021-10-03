@@ -12,7 +12,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        /*$categories = Category::all();
 
         $items = Item::all();
 
@@ -26,8 +26,18 @@ class WelcomeController extends Controller
         })->orderBy("id","desc")->paginate(6);
         $categories = PostCategory::all();
 
-        return view('welcome.index',compact('posts','categories','items','categories'));
+        return view('welcome.index',compact('posts','categories','items','categories'));*/
         // return view('welcome.index',compact('items','categories'));
+        $posts = Post::when(request()->category, function($query){
+            $query->orderBy("id","desc")->where('category_id',request()->category)->get();
+        })->when(request()->search, function ($query){
+            $searchKey = request()->search;
+            $query->where("name","LIKE","%$searchKey%")->orWhere("description","LIKE","%$searchKey%");
+            //Eager Loading for sql DB
+        })->orderBy("id","desc")->paginate(6);
+        $categories = PostCategory::all();
+        $items = Item::all();
+        return view('welcome.index',compact('posts','items','categories'));
     }
     public function showItem($id)
     {
@@ -35,16 +45,11 @@ class WelcomeController extends Controller
         return view("welcome.itemShow", compact('item'));
     }
 
-    public function showPortfolio()
-    {
-        $posts = Post::orderBy('id','desc')->limit(3)->get();
-        return view("welcome.portfolio",compact('posts'));
-    }
-
     public function showByCategory($id){
         $categories = PostCategory::all();
         $posts = Post::orderBy("id","desc")->where('category_id',$id)->paginate(4);
-        return view('welcome.index',compact('posts','categories'));
+        $items = Item::all();
+        return view('welcome.index',compact('posts','items','categories'));
     }
 
     public function show($category, $id)
@@ -52,6 +57,8 @@ class WelcomeController extends Controller
         $post = Post::find($id);
         $posts = Post::orderBy('id','desc')->where('id','<>',$id)->where('category_id','=',$post->category_id)->limit(3)->get();
         // return $category;
-        return view("blog-page.postShow", compact('post','posts'));
+        return view("welcome.postShow", compact('post','posts'));
     }
+
+
 }

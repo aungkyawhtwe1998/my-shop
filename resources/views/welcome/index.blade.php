@@ -24,9 +24,9 @@
                         </div>
                         <div class="">
                             <select name="category" class="custom-select" onchange="window.location.href=this.value;">
-                                <option value="{{ route('blogs.index') }}">All</option>
+                                <option value="{{ route('welcome') }}">All</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ route('blogs.showbyCategory', $category->id) }}">
+                                    <option value="{{ route('welcome.showByCategory', $category->id) }}">
                                         {{ $category->title }}
                                     </option>
                                 @endforeach
@@ -66,7 +66,7 @@
                                     <p class="text-justify" style="color: black">
                                         {!!substr(html_entity_decode($post->description), 0, 250)!!}
                                     </p>
-                                    <form action="{{ route('blogs.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}" method="get">
+                                    <form action="{{ route('welcome.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}" method="get">
                                         <button class="btn btn-secondary btn-sm" type="submit">Read More</button>
                                     </form>
                                 </div>
@@ -80,17 +80,17 @@
     {{-- end blogs --}}
 
     {{-- item --}}
-    <div class="container-fluid" id="item" style="background-color: #fefefe;">
+    <div class="container-fluid mt-5" id="item" >
         <div class="row min-vh-100">
-            <div class="container">
+            <div class="container bg-light">
                 <div class="row my-3">
                     <div class="col-12">
                         <h2 class="mt-3 text-primary text-center font-weight-bolder">Explore Items</h2>
                         <h4 class="mb-3 text-primary text-center font-weight-bold"><i class="feather-arrow-down"></i></h4>
                         <div class="row">
                             @foreach ($items as $item)
-                                <div class="col-12 col-md-6">
-                                    <div class="card bg-transparent m-0 p-0 rounded shadow mb-3">
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="card m-0 p-0 rounded shadow mb-3">
                                         <div class="card-body">
                                             <span class="text-primary font-weight-bold">{{ $item->title }}</span>
                                             <hr>
@@ -164,9 +164,9 @@
     </div>
 @endsection
 @section('footer')
-<div class="container-fluid footer">
+<div class="container-fluid ">
     <div class="row">
-        <div class="container">
+        <div class="container footer">
             <div class="row mt-5 pt-3 align-items-center justify-content-center">
                 <div class="col-12 text-center">
                     <h2 class="text-primary font-weight-bolder">Contact or suggest me</h2>

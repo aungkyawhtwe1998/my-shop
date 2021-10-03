@@ -186,7 +186,7 @@
                                         <i class="fas fa-blog text-dark text-primary "></i>
                                         <span class="mytext fw-bold">{{ Str::substr($post->name, 0, 45) }} ...
                                             <a
-                                                href="{{ route('blogs.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}">Read
+                                                href="{{ route('welcome.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}">Read
                                                 more
                                             </a>
                                         </span>
