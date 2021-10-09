@@ -14,10 +14,8 @@
                     <h4><i class="feather-users"></i> User Lists</h4>
                 </div>
                 <div class="card-body">
-                    <div class="d-flex my-3 justify-content-between align-items-center">
-                        <div class="">
-                            {{ $users->appends(Request::all())->links() }}
-                        </div>
+                    <div class="w-25 my-3">
+
                         <form action="{{ route('category-manager.index') }}" method="POST" class="">
                             <div class="form-inline">
                                 <input type="text" class="form-control mr-2" name="search-key">
@@ -105,6 +103,9 @@
 
                         </thead>
                     </table>
+                    <div class="my-3">
+                        {{ $users->appends(Request::all())->links() }}
+                    </div>
                 </div>
             </div>
         </div>

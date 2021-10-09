@@ -248,7 +248,6 @@
             </div>
         </div>
     </div>
-    </div>
 @endsection
 @section('foot')
     <script>

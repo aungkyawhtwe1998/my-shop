@@ -13,10 +13,8 @@
             <div class="card rounded shadow">
                 <div class="card-header">Items List</div>
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center my-3">
-                        <div class="">
-                            {{ $items->appends(Request::all())->links() }}
-                        </div>
+                    <div class="w-25 my-3">
+
                         <form action="{{ route('item.index') }}" method="get">
                             <div class="d-flex">
                                 <input type="text" class="form-control mr-2" name="search">
@@ -82,6 +80,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-3">
+                        {{ $items->appends(Request::all())->links() }}
+                    </div>
                 </div>
             </div>
         </div>

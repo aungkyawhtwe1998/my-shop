@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow px-3">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm px-3">
                 <a class="navbar-brand" href="#">
                     <i class="fab fa-blogger-b text-secondary"></i>
                 </a>
