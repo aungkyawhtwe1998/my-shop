@@ -80,7 +80,7 @@
     {{-- end blogs --}}
 
     {{-- item --}}
-    <div class="container-fluid mt-5" id="item" >
+    {{-- <div class="container-fluid mt-5" id="item">
         <div class="row min-vh-100">
             <div class="container bg-light">
                 <div class="row my-3">
@@ -113,21 +113,14 @@
                                                                 <div class="show-thumbnail rounded"
                                                                     style="background-image:url('{{ asset('storage/items/' . $img->location) }}');">
                                                                 </div>
-                                                                {{-- <img src="{{ asset('storage/items/' . $img->location) }}"
-                                                                class="item-thumbnial d-block w-100"> --}}
                                                             </div>
                                                         @endforeach
                                                     </div>
-                                                    {{-- <a class="carousel-control-prev" href="#carouselExampleIndicators"
-                                                    role="button" data-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
                                                 <a class="carousel-control-next" href="#carouselExampleIndicators"
                                                     role="button" data-slide="next">
                                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                     <span class="sr-only">Next</span>
-                                                </a> --}}
+                                                </a>
                                                 </div>
                                                 <p class="text-justify text-dark">
                                                     {{ substr($item->description, 0, 50) }} ...
@@ -161,7 +154,7 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
 @endsection
 @section('footer')
 <div class="container-fluid ">
@@ -173,8 +166,6 @@
                 </div>
                 <div class="divider"></div>
             </div>
-
-            <div class="row m-0 p-0">
                 <div class="col-12 col-lg-6">
                     <div class="mt-4 pt-3">
                         <form action="{{ route('message.store') }}" method="POST"

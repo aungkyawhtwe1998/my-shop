@@ -201,14 +201,12 @@
             {{-- End right side bar --}}
         </div>
     </div>
-    <hr>
-    <br>
 @endsection
 @section('footer')
-    <div class="container-fluid footer">
+    <div class="container-fluid ">
         <div class="row">
             <footer class="col-12">
-                <div class="container">
+                <div class="container footer">
                     <div class="row my-3 align-items-center justify-content-center ">
                         <div class="col-12 col-lg-6 ">
                             <div class="text-center d-flex flex-column text-warning mb-5">

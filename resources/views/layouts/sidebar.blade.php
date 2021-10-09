@@ -1,10 +1,10 @@
-<div class="col-12 col-lg-3 col-xl-2 vh-100 sidebar">
+<div class="col-12 col-md-6 col-lg-3 col-xl-2 vh-100 sidebar">
     <div class="d-flex justify-content-between align-items-center py-2 mt-3 nav-brand">
         <div class="d-flex align-items-center">
             <span class="bg-primary p-2 rounded d-flex justify-content-center align-items-center mr-2">
-                <i class="feather-code text-white h4 mb-0"></i>
+                <i class="fab fa-blogger-b text-white h4 mb-0"></i>
             </span>
-            <span class="font-weight-bolder h4 mb-0 text-uppercase text-primary">My Blog</span>
+            <span class="font-weight-bolder h4 mb-0 text-uppercase text-primary">Blogger Panel</span>
         </div>
         <button class="hide-sidebar-btn btn d-block d-lg-none">
             <i class="feather-x text-primary" style="font-size: 2em;"></i>

@@ -20,8 +20,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-6">
-                <div class="card rounded shadow">
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="card blog-card rounded shadow">
                     <div class="card-header ">Item Detail</div>
                     <div class="card-body">
                         <h4 class="text-primary font-weight-bold">{{ $item->title }}</h4>
@@ -40,25 +40,24 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
-                <div class="row">
-                    <div class="card rounded shodow-sm">
-                        <div class="card-body">
-                            <div class="row">
-                                @foreach ($item->getPhotos as $img)
-                                    <div class="col-6">
-                                        <img src="{{ asset('storage/items/' . $img->location) }}"
-                                            class="rounded d-block w-100 my-1">
-                                    </div>
-
-                                @endforeach
-                            </div>
-
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="card blog-card rounded shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-flex justify-content-center align-items-center">
+                            @foreach ($item->getPhotos as $img)
+                                <div class="col-6">
+                                    <img src="{{ asset('storage/items/' . $img->location) }}"
+                                         class="rounded d-block w-100 my-1">
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-
                 </div>
-
+            </div>
+            <div class="col-12 col-md-6 col-lg-6">
+                <form action="#" >
+                    <button class="btn btn-primary w-100 mt-3">Buy</button>
+                </form>
             </div>
         </div>
     </div>

@@ -3,9 +3,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card shadow-sm">
-                    <div class="card-header"><i class="fas fa-home"></i> {{ __('Dashboard') }}</div>
-                    <div class="card-body">
+                <div class="">
+                    <div class=""><i class="fas fa-home"></i> {{ __('Dashboard') }}</div>
+                    <div class="">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -23,32 +23,32 @@
                         <button class="btn btn-primary test-toast">Test Toast</button> --}}
 
                         <div class="row">
-                            <div class="col-3">
-                                <div class="card shadow-sm rounded">
+                            <div class="col-6 col-lg-3" >
+                                <div class="card blog-card mb-2 shadow-sm rounded">
                                     <div class="card-body text-center">
                                         <i class="feather-user"></i><br>
                                         <span>100</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="card shadow-sm rounded">
+                            <div class="col-6 col-lg-3">
+                                <div class="card blog-card mb-2 shadow-sm rounded">
                                     <div class="card-body text-center">
                                         <i class="feather-check"></i><br>
                                         <span>100</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="card shadow-sm rounded">
+                            <div class="col-6 col-lg-3">
+                                <div class="card blog-card mb-2 shadow-sm rounded">
                                     <div class="card-body text-center">
                                         <i class="feather-clock"></i><br>
                                         <span>100</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="card shadow-sm rounded">
+                            <div class="col-6 col-lg-3">
+                                <div class="card blog-card mb-2 shadow-sm rounded">
                                     <div class="card-body text-center">
                                         <i class="feather-folder"></i><br>
                                         <span>100</span>
