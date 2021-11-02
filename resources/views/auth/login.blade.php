@@ -9,7 +9,7 @@
             <div class="my-5">
                 <div class="d-flex align-items-center justify-content-center mb-4">
                     <span class="p-2 rounded d-flex justify-content-center align-items-center mr-2">
-                        <i class="fab fa-blogger-b text-primary h4 mb-0"></i>
+                         <img src="{{asset('/img/trans-logo.png')}}" width="50px">
                     </span>
                     <span class="font-weight-bolder h4 mb-0 text-uppercase text-primary">Alex-Blog</span>
                 </div>

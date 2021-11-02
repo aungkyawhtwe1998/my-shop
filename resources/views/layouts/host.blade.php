@@ -5,24 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{asset('/img/trans-logo.png')}}" />
     <title>@yield('title','My Shop')</title>
-    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 @yield('style')
 
 <body>
-
     @yield('header')
 
-    {{-- Nav bar --}}
+{{-- Nav bar --}}
 
-    {{-- end Nav Bar --}}
+{{-- end Nav Bar --}}
 
     @yield('content')
 
-    {{-- footer --}}
+{{-- footer --}}
     @yield('footer')
+
+
+
 
 
     {{-- end footer --}}

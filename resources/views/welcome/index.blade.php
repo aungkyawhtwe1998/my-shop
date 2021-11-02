@@ -1,6 +1,6 @@
 @extends('layouts.host')
 @section('title')
-    Alex
+    Code-Lex
 @endsection
 @section('style')
 @endsection
@@ -11,53 +11,106 @@
 @endsection
 @section('content')
     {{-- home --}}
-    <div class="container-fluid">
+    <div class="container-fluid ">
+        <div class="row min-vh-100">
+            <div class="container" style="background-image: url("{{asset('/public/img/bg-2.svg')}}")">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12 col-lg-6 text-center align-items-center">
+                        <div class="row justify-content-center align-items-center animate__animated animate__heartBeat">
+                            <span class="home-text ">C</span> <img src="{{asset('/img/trans-logo.png')}}" class="logo-size animate__bounceIn" width="80px"  alt="Logo"/> <span class="home-text">DE-LEX</span>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <span class="font-weight-bold text-secondary display-5 animate__animated animate__zoomIn animate__delay-1s">Code Lex is the personal Blog especially <br> for web development and IT.</span>
+                        </div>
+                       <div class="mt-4 d-flex flex-column align-items-center justify-content-center">
+                          <div class="">
+                              <a href="{{route('welcome')}}/#contact" class="btn btn-primary animate__animated animate__bounceInRight animate__delay-2s">Contact me
+                              </a>
+                              <a href="{{route('welcome')}}/#blog" class="btn btn-outline-primary animate__animated animate__bounceInLeft animate__delay-2s">Read Blogs</a>
+                          </div>
+                           <div class="mt-2">
+                               <div class="divider bg-success animate__animated animate__bounceIn animate__delay-3s"></div>
+                           </div>
+                       </div>
+
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <img src="{{asset('/img/vect.svg')}}" width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- end home --}}
+
+
+    {{--    about --}}
+    <div class="container-fluid " id="about">
+        <div class="row ">
+            <div class="container bg-dark service-bg min-vh-50">
+                <div class="row min-vh-100 align-items-center justify-content-center">
+                    <div class="col-12 col-lg-6 text-center mt-5">
+                        <div class="">
+                            <img src="{{asset('/img/vect2.svg')}}" class="rounded" width="100%" alt="Services">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 justify-content-center align-items-center">
+                        <div class="">
+                            <span class="h1 home-text">Objective</span>
+                            <div class="divider"></div>
+                            <div class="text-left">
+                                <p class="font-weight-bold text-justify text-success">&emsp; This is my personal website for web development journey. I would like to expend my knowledge in web development through this website. I will maintain the website to keep up and running. I would like to thanks all the subscriber to my Youtube channel and Facebook. This blog is intended to upload web development tips and tricks for the beginner and intermediate.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- blogs --}}
+    <div class="container-fluid mt-5 pt-5"   id="blog">
         <div class="row">
             <div class="container align-items-center justify-content-center">
                 <div class="col-12">
-                    <div class="text-center mt-5 pt-3">
-                        <span class="h1 text-primary font-weight-bold">Alex</span><span class="h2 text-dark"> - Blog</span>
+                    <div class="d-flex flex-column text-center mt-5 pt-3 justify-content-center align-items-center">
+                        <span class="h1 home-text"> Blogs</span>
+                        <div class="divider"></div>
                     </div>
                     <div class="row justify-content-between">
                         <div class="">
                             {{ $posts->appends(Request::all())->links() }}
                         </div>
                         <div class="">
-                                    <select name=" category" class="custom-select"
-                            onchange="window.location.href=this.value;">
-                            <option value="{{ route('welcome') }}">All</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ route('welcome.showByCategory', $category->id) }}">
-                                    {{ $category->title }}
-                                </option>
-                            @endforeach
+                            <select name=" category" class="custom-select" onchange="window.location.href=this.value;">
+                                <option value="{{ route('welcome') }}">All</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ route('welcome.showByCategory', $category->id) }}">
+                                        {{ $category->title }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    {{-- end home --}}
-
-    {{-- blogs --}}
-    <div class="container-fluid">
         <div class="row">
-            <div class="container">
+            <div class="container ">
                 <div class="row">
                     @foreach ($posts as $post)
-                        <div class="col-12 col-lg-4 col-md-6">
+                        <div class="col-12 col-lg-3 col-md-6">
                             <div
-                                class="blog-card shadow rounded mb-2 wow slideInLeft ani-delay-1 p-1 justify-content-center align-content-center">
+                                class="blog-card shadow rounded mb-2 wow animate__bounceIn p-1 justify-content-center align-content-center">
                                 <div class="rounded show-thumbnail"
                                     style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}'); width:100%; height:200px">
                                 </div>
                                 <div class="">
                                     <span class=" badge badge-pill
                                     badge-success">
-                                    <i class="feather-user"></i>
-                                    {{ $post->getUser->name }}
+                                        <i class="feather-user"></i>
+                                        {{ $post->getUser->name }}
                                     </span>
                                     <span class="badge badge-pill badge-secondary"><i class="fas fa-clock text-light mr-2">
                                         </i>{{ $post->created_at->diffForHumans() }}
@@ -71,7 +124,7 @@
                                     <form
                                         action="{{ route('welcome.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}"
                                         method="get">
-                                        <button class="btn btn-secondary btn-sm" type="submit">Read More</button>
+                                        <button class="btn btn-primary btn-sm" type="submit">Read More</button>
                                     </form>
                                 </div>
                             </div>
@@ -162,12 +215,15 @@
 @endsection
 
 @section('footer')
-    <div class="container-fluid ">
+    <div class="container-fluid mt-5 pt-5" id="contact">
         <div class="row">
             <div class="container rounded bg-secondary">
                 <div class="row mt-5 pt-3 align-items-center justify-content-center">
                     <div class="col-12 text-center">
-                        <h2 class="text-primary font-weight-bolder">Contact or suggest me</h2>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <h2 class="text-success font-weight-bolder">Contact or suggest me</h2>
+                            <div class="divider bg-white"></div>
+                        </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-6 p-3 ">
                         <div class="bg-light rounded p-3">
@@ -203,13 +259,13 @@
                     <div class="col-12 col-md-6 col-lg-6">
                         <iframe class="rounded"
                             src="
-                                    https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3701.237767292931!2d96.12430261432397!3d21.925409011940438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30cb7273d6d0f81d%3A0x27d920dcc9b4b56d!2s52nd%20St%2C%20Mandalay%2C%20Myanmar%20(Burma)!5e0!3m2!1sen!2ssg!4v1621066874005!5m2!1sen!2ssg"
+                                        https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3701.237767292931!2d96.12430261432397!3d21.925409011940438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30cb7273d6d0f81d%3A0x27d920dcc9b4b56d!2s52nd%20St%2C%20Mandalay%2C%20Myanmar%20(Burma)!5e0!3m2!1sen!2ssg!4v1621066874005!5m2!1sen!2ssg"
                             width="100%" height="335px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
                     </div>
-                    <div class="col-12 col-lg-6 my-2">
+                    <div class="col-12 col-lg-6 my-3">
                         <div class="text-center d-flex flex-column mb-5 text-white">
-                            <h3 class="text-primary fw-bolder mb-3 fw-bolder">Contact</h3>
+                            <h3 class="text-success fw-bolder mb-3 fw-bolder">Contact</h3>
                             <span>Aung Kyaw Htwe</span>
                             <span>No3,Between 51 & 52, 113 street, Mandalay</span>
                             <span>Phone: <a href="tel:09798802184">09798802184</a></span>
@@ -217,26 +273,23 @@
                         </div>
 
                     </div>
-                    <div class="col-12 col-lg-6 my-2">
-                        <div class="d-flex flex-column text-center fs-5 mytext">
-                            <h3 class="text-primary fw-bolder fw-bolder">My Social Media platform</h3>
-                            <div class="social-icon p-5 d-flex justify-content-center mt-3">
-                                <a href="https://www.facebook.com/alex.akh1998/">
-                                    <i class="mx-3 fab fa-facebook-f mytext fa-2x "></i>
+                    <div class="col-12 col-lg-6 my-3 ">
+                        <div class="d-flex flex-column text-center fs-5">
+                            <h3 class="text-success fw-bolder fw-bolder">My Social Media platform</h3>
+                            <div class="p-5 d-flex justify-content-center align-items-center mt-3">
+                                <a href="https://www.facebook.com/codeLex.mm">
+                                    <i class="mx-3 fab social-icon fa-facebook-f fa-2x "></i>
                                 </a>
-                                <a href="https://www.linkedin.com/in/aung-kyaw-htwe-851a48187/">
-                                    <i class="fab mx-3 fa-linkedin mytext fa-2x"></i>
+                                <a href="https://www.youtube.com/channel/UCIwB3osrjw9mjX9Heny2V9Q">
+                                    <i class="fab mx-3 social-icon fa-youtube fa-2x"></i>
                                 </a>
-                                <a href="#">
-                                    <i class="fab mx-3 fa-instagram mytext fa-2x"></i>
-                                </a>
-                                <a href="https://twitter.com/AlexAlexAKH">
-                                    <i class="fab mx-3 fa-twitter mytext fa-2x"></i>
+                                <a href="https://github.com/aungkyawhtwe1998">
+                                    <i class="fab mx-3 social-icon fa-github fa-2x"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 bg-secondary rounded">
+                    <div class="col-12 bg-dark rounded">
                         <div class="py-5 fw-boler d-flex flex-column text-center fs-5">
                             <span class="text-white"> © Copyright Myanmar. All Right Reserved</span>
                             <span class="text-white"> Designed by<a href="#" class="text-light"> Aung Kyaw

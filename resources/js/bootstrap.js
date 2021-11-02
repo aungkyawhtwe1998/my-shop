@@ -1,5 +1,7 @@
 window._ = require("lodash");
 import Swal from "sweetalert2/dist/sweetalert2.js";
+
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -9,6 +11,7 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 try {
     window.Popper = require("popper.js").default;
     window.$ = window.jQuery = require("jquery");
+    window.animate = require('animate.css');
     window.Swal = Swal;
     require("bootstrap");
 } catch (e) {}
