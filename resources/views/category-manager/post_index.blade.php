@@ -15,11 +15,18 @@
                     <hr>
                     <form action="{{ route('post-category.store') }}" method="POST">
                         @csrf
-                        <div class="form-inline">
-                            <input type="text" class="form-control mr-2" name="title" placeholder="Enter Category Name"
-                                required>
+                        <div class="form-inline align-items-start">
+                            <div class="d-flex flex-column">
+                                <input type="text" class="form-control mr-2" name="title" placeholder="Enter Category Name"
+                                       required>
+                                @error('title')
+                                <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                @enderror
+
+                            </div>
                             <button class="btn btn-primary">Add</button>
                         </div>
+
                     </form>
                     <hr>
                     <table class="table table-hover">
@@ -36,12 +43,13 @@
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->title }}</td>
-                                    <td>{{ $category->getUser->name }}</td>
+                                    <td>@isset($category->getUser->name) {{$category->getUser->name}} @endisset</td>
                                     <td class="text-nowrap">
                                         <form class="d-inline-block"
                                             action="{{ route('post-category.destroy', $category->id) }}" method="post"
                                             id="deleteForm{{ $category->id }}">
                                             @csrf
+                                            @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $category->id }}">
                                             <button type="button" class="btn btn-sm btn-danger"
                                                 onclick="deleteCategory({{ $category->id }})"><i
@@ -127,7 +135,8 @@
                                 icon: "success",
                                 title: "Success",
                                 text: data.message
-                            })
+                            });
+                            location.reload();
                         } else {
                             console.log(data);
                             Swal.fire({

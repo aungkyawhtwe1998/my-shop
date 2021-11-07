@@ -21,7 +21,7 @@ class PostController extends Controller
     {
         $posts = Post::when(Auth::user()->role!=0,function($query){
             $query->where('user_id',Auth::id());
-        })->orderBy("id","desc")->paginate(6);
+        })->latest("id")->paginate(2);
         return view('post-manager.index',compact('posts'));
     }
 
@@ -48,9 +48,9 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'description'=>'required',
-            'category_id'=>'required',
+            'name'=>'required|unique:posts,name|min:10|max:150',
+            'description'=>'required|min:10',
+            'category_id'=>'required|exists:post_categories,id',
             "photo"=>"required|mimetypes:image/jpeg,image/png",
         ]);
         if($request->hasFile("photo")){
@@ -95,8 +95,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $categories = PostCategory::all();
-        return view('post-manager.edit-post',compact('post','categories'));
+//        $categories = PostCategory::all();
+        return view('post-manager.edit-post',compact('post'));
     }
 
     /**

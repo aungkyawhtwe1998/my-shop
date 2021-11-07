@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserManagerController extends Controller
 {
     public function index(){
-        $users = User::orderBy("id","desc")->paginate(5);
+        $users = User::when(request()->search, function ($query){
+            $searchKey = request()->search;
+            $query->where("name","LIKE","%$searchKey%")->orWhere("email","LIKE","%$searchKey%");
+            //Eager Loading for sql DB
+        })->orderBy("id","desc")->paginate(5);
         return view('user-manager.index',compact('users'));
     }
     public function makeAdmin(Request $request){
@@ -29,7 +34,7 @@ class UserManagerController extends Controller
             $currentUser->update();
         }
         return redirect()->back()->with("toast",['icon'=>'success','title'=>$currentUser->name.'is banned']);
-   
+
     }
 
     public function restoreUser(Request $request){
@@ -38,7 +43,7 @@ class UserManagerController extends Controller
             $currentUser->isBanned= '0'; //enum
             $currentUser->update();
         }
-        return redirect()->back()->with("toast",['icon'=>'success','title'=>$currentUser->name.'is restored']);   
+        return redirect()->back()->with("toast",['icon'=>'success','title'=>$currentUser->name.'is restored']);
     }
 
     public function changeUserPassword(Request $request){

@@ -51,8 +51,7 @@
                                 <div class="card-header"><h4 class="text-primary font-weight-bold">{{ $post->name }}</h4></div>
                                 <div class="card-body">
                                     <span class="badge badge-pill badge-success">
-                                <i class="feather-user"></i>
-                                {{ $post->getUser->name }}
+                                <i class="feather-user"></i>@isset($post->getUser->name ) {{$post->getUser->name }} @endisset
                             </span>
                                     <span class="badge badge-pill badge-info">
                                 <i class="feather-calendar"></i>
@@ -176,7 +175,7 @@
                                             <div>
                                         <span class="badge badge-pill badge-success">
                                             <i class="feather-user"></i>
-                                            {{ $post->getUser->name }}
+                                           @isset($post->getUser->name ) {{$post->getUser->name }} @endisset
                                         </span>
                                                 <span class="badge badge-pill badge-info">
                                             <i class="feather-calendar"></i>

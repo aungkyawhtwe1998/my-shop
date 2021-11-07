@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-       
+
     }
 
     /**
@@ -39,7 +39,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required|max:100'
+            'title'=>'required|unique:categories,title|max:100'
         ]);
         $category = new Category();
         $category->title = $request->title;
@@ -89,7 +89,7 @@ class CategoryController extends Controller
         $category->title = $request->name;
         $category->update();
         return response()->json(['status'=>200,"message"=>"Name Change for $category->title is complete"]);
-        
+
     }
 
     /**

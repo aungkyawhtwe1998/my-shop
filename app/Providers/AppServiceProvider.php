@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Category;
+use App\PostCategory;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+//
     }
 
     /**
@@ -24,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        View::share("categories",Category::all());
+        View::share("post_categories", PostCategory::all());
     }
 }

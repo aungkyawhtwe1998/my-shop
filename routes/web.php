@@ -38,9 +38,10 @@ Auth::routes();
 
 //Auth middleware
 Route::middleware(["auth","isBanned"])->group(function(){
-    Route::get('/home', 'HomeController@index')->name('home');
 
     Route::prefix('dashboard')->group(function(){
+        Route::get('/home', 'HomeController@index')->name('home');
+
 //Items
         Route::resource('item', 'ItemController');
         Route::resource('item-photo', 'ItemPhotoController');
@@ -61,6 +62,7 @@ Route::middleware(["auth","isBanned"])->group(function(){
             Route::post('/cateogry-manager-edit','CategoryController@update')->name('catergory-manager.update');
 
             Route::resource('post-category', 'PostCategoryController');
+
             Route::post('/post-category-edit','PostCategoryController@update')->name('post-category.update');
 
          });

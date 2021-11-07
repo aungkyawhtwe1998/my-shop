@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Padauk:wght@400;700&display=swap');@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Padauk:wght@400;700&display=swap');
 $font-family-sans-serif: 'Montserrat','Padauk', sans-serif;
-$primary:#0035c3;
-$dark: #141a24;
-$secondary:#1a2639;
-$light:#C9D1D9;
+$primary: #1E3577;
+$dark: #08070D;
+$secondary:#05050E;
+$light: #f1f2f3;
 $success:#00ffe1;
 $warning:#E3B341;
 $danger:#E34C26;
-$border-radius: 1.5rem;
-$border-width:2px;
+$border-radius: 1.09rem;
+$border-width:2.5px;
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import 'feather-icons-web/feather.css';

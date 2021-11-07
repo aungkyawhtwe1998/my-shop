@@ -40,7 +40,7 @@ class PostCategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required|max:100'
+            'title'=>'required|max:100|unique:post_categories,title'
         ]);
         $category = new PostCategory();
         $category->title = $request->title;
@@ -90,7 +90,7 @@ class PostCategoryController extends Controller
         $category->title = $request->name;
         $category->update();
         return response()->json(['status'=>200,"message"=>"Name Change for $category->title is complete"]);
-        
+
     }
 
     /**

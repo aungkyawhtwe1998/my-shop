@@ -1,9 +1,9 @@
-<div class="container">
-    <div class="row">
+<div class="container-xl">
+    <div class="row header">
         <div class="col-12">
-            <nav class="navbar navbar-expand-lg navbar-dark blurred-box shadow-sm px-3 py-2 justify-content-between">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-secondary shadow-sm shadow-sm px-3 py-2 justify-content-between">
                 <a class="navbar-brand" href="#">
-                    <img src="{{asset('/img/trans-logo.png')}}" width="50px">
+                    <img src="{{asset(\App\Base::$logo)}}" width="50px" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="menu-icon fa fa-bars"></span>
@@ -15,11 +15,11 @@
                             <a class="nav-link rounded" href="{{ route('welcome') }}">Home <span
                                     class="sr-only">(current)</span></a>
                         </li>
-                            @if (Auth::user()!=null && Auth::user()->role == 0)
-                                <li class="nav-item">
-                                    <a class="nav-link rounded" href="{{ route('home') }}">Dashboard</a>
-                                </li>
-                            @endif
+                        @if (Auth::user()!=null && Auth::user()->role == 0)
+                            <li class="nav-item">
+                                <a class="nav-link rounded" href="{{ route('home') }}">Dashboard</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link rounded" href="https://aungkyawhtwe1998.github.io/">About</a>
                         </li>
@@ -40,4 +40,3 @@
         </div>
     </div>
 </div>
-

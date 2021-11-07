@@ -9,9 +9,9 @@
             <div class="my-5">
                 <div class="d-flex align-items-center justify-content-center mb-4">
                     <span class="p-2 rounded d-flex justify-content-center align-items-center mr-2">
-                         <img src="{{asset('/img/trans-logo.png')}}" width="50px">
+                         <img src="{{asset(\App\Base::$logo)}}" width="50px" alt="Logo">
                     </span>
-                    <span class="font-weight-bolder h4 mb-0 text-uppercase text-primary">Alex-Blog</span>
+                    <span class="font-weight-bolder h4 mb-0 text-uppercase text-primary"></span>
                 </div>
                 <div class="card rounded bg-white shadow">
                     <div class="card-body p-3">

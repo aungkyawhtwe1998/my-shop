@@ -8,9 +8,7 @@
         <div class="col-12 col-md-6 col-lg-5">
             <div class="my-5">
                 <div class="d-flex align-items-center justify-content-center mb-4">
-                     <span class="p-2 rounded d-flex justify-content-center align-items-center mr-2">
-                        <i class="fab fa-blogger-b text-primary h4 mb-0"></i>
-                    </span>
+                    <img src="{{asset(\App\Base::$logo)}}" class="w-50" alt="logo">
                     <span class="font-weight-bolder h4 mb-0 text-uppercase text-primary">Alex-Blog</span>
                 </div>
                 <div class="card rounded bg-white rounded shadow">

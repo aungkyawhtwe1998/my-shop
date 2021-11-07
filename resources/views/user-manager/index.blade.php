@@ -14,14 +14,18 @@
                     <h4><i class="feather-users"></i> User Lists</h4>
                 </div>
                 <div class="card-body">
-                    <div class="w-25 my-3">
-
-                        <form action="{{ route('category-manager.index') }}" method="POST" class="">
-                            <div class="form-inline">
-                                <input type="text" class="form-control mr-2" name="search-key">
-                                <button class="btn btn-primary">Search</button>
-                            </div>
-                        </form>
+                    <div class="d-lg-flex d-md-flex justify-content-between align-items-center ">
+                        <div class="">
+                            {{ $users->appends(Request::all())->links() }}
+                        </div>
+                        <div class="mb-2">
+                            <form action="{{ route('user-manager.index') }}" method="get">
+                                <div class="d-flex">
+                                    <input type="text" class="form-control mr-2" name="search" placeholder="Enter name or email">
+                                    <button class="btn btn-primary">Search</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <table class="table table-hover mb-0">
                         <thead>

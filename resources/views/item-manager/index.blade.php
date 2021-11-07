@@ -13,14 +13,18 @@
             <div class="card rounded shadow">
                 <div class="card-header">Items List</div>
                 <div class="card-body">
-                    <div class="w-25 my-3">
-
-                        <form action="{{ route('item.index') }}" method="get">
-                            <div class="d-flex">
-                                <input type="text" class="form-control mr-2" name="search">
-                                <button class="btn btn-primary">Search</button>
-                            </div>
-                        </form>
+                    <div class="d-lg-flex d-md-flex justify-content-between align-items-center ">
+                        <div class="">
+                            {{ $items->appends(Request::all())->links() }}
+                        </div>
+                        <div class="mb-2">
+                            <form action="{{ route('item.index') }}" method="get">
+                                <div class="d-flex">
+                                    <input type="text" class="form-control mr-2" name="search" placeholder="Enter title or description">
+                                    <button class="btn btn-primary">Search</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
 
                     <table class="table table-hover mb-0">

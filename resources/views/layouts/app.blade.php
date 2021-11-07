@@ -35,9 +35,7 @@
                 <div class="col-12 col-lg-9 col-xl-10 py-3 vh-100 content" style="box-shadow:0 0 5px #00000020 inset;">
                     @include('layouts.header')
 
-                    <!-- content area start -->
-                    @yield('content')
-
+                    <!-- content area start -->@yield('content')
                 </div>
             </div>
         </section>
