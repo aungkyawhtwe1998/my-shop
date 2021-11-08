@@ -12,17 +12,11 @@
 @yield('style')
 
 <body>
-<header>
+<main class="container-fluid">
     @yield('header')
-
-</header>
-<main>
     @yield('content')
-</main>
-
-<footer>
     @yield('footer-layout')
-</footer>
+</main>
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('foot')
 @include('layouts.toasts')

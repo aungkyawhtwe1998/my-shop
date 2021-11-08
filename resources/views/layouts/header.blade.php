@@ -1,4 +1,4 @@
-<div class="container-fluid header">
+<div class="container-fluid dash-header">
     <div class="row bg-primary rounded mb-3">
         <div class="col-12">
             <div class="py-2 header-bar rounded d-flex justify-content-between align-items-center">
