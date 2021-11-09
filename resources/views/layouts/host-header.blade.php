@@ -1,9 +1,9 @@
-<div class="container-fluid home-nav  ">
-    <div class="row m-sm-0">
-        <div class="container-xl ">
-            <div class="row m-sm-0">
+<div class="container-fluid home-nav p-0">
+    <div class="row m-0 p-0 justify-content-center align-items-center">
+        <div class="container-xl p-0 m-0 ">
+            <div class="row my-1 p-0">
                 <div class="col-12">
-                    <nav class="navbar navbar-expand-lg navbar-dark justify-content-between">
+                    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm justify-content-between">
                         <a class="navbar-brand" href="#">
                             <img src="{{asset(\App\Base::$logo)}}" width="50px" alt="Logo">
                         </a>

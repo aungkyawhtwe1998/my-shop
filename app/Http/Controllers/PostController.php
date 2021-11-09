@@ -19,9 +19,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::when(Auth::user()->role!=0,function($query){
+        /*$posts = Post::when((isset(request()->search)), function ($q){
+            $search = request()->search;
+            $q->where("name","like","%$search%");
+        })->latest("id")->paginate(2);*/
+        $posts = Post::when((isset(request()->search)), function ($q){
+            $search = request()->search;
+            $q->where("name","like","%$search%")->orwhere("description", "Like","%$search%");
+        })->when(Auth::user()->role!=0,function($query){
             $query->where('user_id',Auth::id());
-        })->latest("id")->paginate(2);
+        })->latest("id")->paginate(3);
         return view('post-manager.index',compact('posts'));
     }
 

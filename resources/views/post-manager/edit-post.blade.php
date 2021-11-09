@@ -12,7 +12,7 @@
             <div class="card shadow rounded">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h2 class="font-weight-bold"><i class="fa fa-edit"></i>Edit Post</h2>
+                        <h4 class=""><i class="fa fa-edit"></i>Edit Post</h4>
                         <a class="btn btn-outline-primary btn-lg" href="{{route('post.index')}}">View Posts </a>
                     </div>
                 </div>

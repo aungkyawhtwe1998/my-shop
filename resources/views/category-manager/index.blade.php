@@ -3,58 +3,58 @@
     Categories
 @endsection
 @section('content')
+    <div class="container-fluid bg-light rounded m-0">
+        <x-bread-crumb>
+            <li class="breadcrumb-item active" aria-current="page">Categories</li>
+        </x-bread-crumb>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <span><i class="feather-list"></i> Category Manager</span>
+                        <hr>
+                        <form action="{{ route('catergory-manager.addCategory') }}" method="POST">
+                            @csrf
+                            <div class="form-inline align-items-start">
+                                <div class="d-flex flex-column">
+                                    <input type="text" class="form-control mr-2" name="title" placeholder="Enter Category Name"
+                                           required>
+                                    @error('title')
+                                    <small class="font-weight-bold text-danger">{{ $message }}</small>
+                                    @enderror
 
-    <x-bread-crumb>
-        <li class="breadcrumb-item active" aria-current="page">Categories</li>
-    </x-bread-crumb>
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <span><i class="feather-list"></i> Category Manager</span>
-                    <hr>
-                    <form action="{{ route('catergory-manager.addCategory') }}" method="POST">
-                        @csrf
-                        <div class="form-inline align-items-start">
-                            <div class="d-flex flex-column">
-                                <input type="text" class="form-control mr-2" name="title" placeholder="Enter Category Name"
-                                       required>
-                                @error('title')
-                                <small class="font-weight-bold text-danger">{{ $message }}</small>
-                                @enderror
-
+                                </div>
+                                <button class="btn btn-primary">Add</button>
                             </div>
-                            <button class="btn btn-primary">Add</button>
-                        </div>
-                    </form>
-                    <hr>
-                    <table class="table table-hover">
-                        <thead>
+                        </form>
+                        <hr>
+                        <table class="table table-hover">
+                            <thead>
                             <th>#</th>
                             <th>Title</th>
                             <th>User</th>
                             <th>Owner</th>
                             <th>Created at</th>
                             <th>Updated at</th>
-                        </thead>
-                        <tbody>
-                            @foreach ($categories as $category)
+                            </thead>
+                            <tbody>
+                            @forelse($categories as $category)
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->title }}</td>
                                     <td>@isset($category->getUser->name) {{$category->getUser->name}} @endisset</td>
                                     <td class="text-nowrap">
                                         <form class="d-inline-block"
-                                            action="{{ route('catergory-manager.destroy', $category->id) }}" method="post"
-                                            id="deleteForm{{ $category->id }}">
+                                              action="{{ route('catergory-manager.destroy', $category->id) }}" method="post"
+                                              id="deleteForm{{ $category->id }}">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $category->id }}">
                                             <button type="button" class="btn btn-sm btn-danger"
-                                                onclick="deleteCategory({{ $category->id }})"><i
-                                                    class="feather-delete"></i></button>
+                                                    onclick="deleteCategory({{ $category->id }})"><i
+                                                    class="fa fa-trash"></i></button>
                                         </form>
                                         <button class="btn btn-warning btn-sm"
-                                            onclick="changeCategoryName({{ $category->id }},'{{ $category->title }}')"><i
+                                                onclick="changeCategoryName({{ $category->id }},'{{ $category->title }}')"><i
                                                 class="feather-edit-2"></i></button>
                                     </td>
                                     <td>
@@ -73,10 +73,15 @@
                                         {{ $category->updated_at->format('h:i') }}
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="text-center text-warning font-weight-bold">There is no Category</td>
+                                </tr>
+                            @endforelse
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Category;
 use App\PostCategory;
+use App\User;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
         //
         View::share("categories",Category::all());
         View::share("post_categories", PostCategory::all());
+        View::share("users", User::all());
     }
 }

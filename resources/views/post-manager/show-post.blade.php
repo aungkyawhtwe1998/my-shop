@@ -13,9 +13,12 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h2>Post Detail</h2>
-                        <a href="{{ route('post.edit', $post->id) }}" class="btn btn-outline-primary rounded"><i
-                                class="feather-edit-2"></i>Edit This Post</a>
+                        <h4><i class="fa fa-info-circle"></i> Post Detail</h4>
+                       <div>
+                           <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary rounded"><i
+                                   class="feather-edit-2"></i>Edit This Post</a>
+                           <a class="btn btn-outline-primary rounded" href="{{route('post.index')}}">View All </a>
+                       </div>
                     </div>
                 </div>
                 <div class="card-body bg-light">

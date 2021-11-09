@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<div class="container-xl bg-light">
+<div class="container-fluid bg-light">
     <x-bread-crumb>
         <li class="breadcrumb-item active" aria-current="page">Items</li>
     </x-bread-crumb>
@@ -13,19 +13,22 @@
             <div class="card rounded shadow">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h2>All Posts</h2>
+                        <h4><i class="feather-layers"></i> All Posts</h4>
                         <a class="btn btn-outline-primary btn-lg" href="{{route('post.create')}}">Create New </a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="d-lg-flex d-md-flex justify-content-between align-items-center ">
-                        <div class="">
-                            {{ $posts->appends(Request::all())->links() }}
+                    <div class="d-lg-flex d-md-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex justify-content-center align-items-center">
+                            @isset(request()->search)
+                                <a href="{{route('post.index')}}" class="btn btn-outline-primary"><i class="feather-layers"></i> Show All</a>
+                                <span class="text-primary font-weight-bold ml-3">Search By: {{request()->search}}</span>
+                            @endisset
                         </div>
-                        <div class="mb-2">
+                        <div class="">
                             <form action="{{ route('post.index') }}" method="get">
                                 <div class="d-flex">
-                                    <input type="text" class="form-control mr-2" name="search" placeholder="Enter title or description">
+                                    <input type="text" class="form-control mr-2" name="search" value="{{request()->search}}" placeholder="Enter title or description">
                                     <button class="btn btn-primary">Search</button>
                                 </div>
                             </form>
@@ -46,26 +49,26 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($posts as $post)
+                        @forelse($posts as $post)
                             <tr>
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->name }}</td>
                                 <td>
-                                    {{--                                        {{Str::words(html_entity_decode($post->description), 100)}}--}}
+                                    {{-- {{Str::words(html_entity_decode($post->description), 100)}}--}}
                                     {!!substr(html_entity_decode($post->description), 0, 200)!!}
                                 </td>
                                 <td>{{ $post->getCategoryName->title }}</td>
                                 <td>@isset($post->getUser->name) {{ $post->getUser->name }} @endisset</td>
                                 <td class="text-nowrap">
                                     <a href="{{ route('post.show', $post->id) }}"
-                                       class="btn btn-sm btn-sm btn-success rounded"><i class="feather-info"></i></a>
+                                       class="btn btn-sm btn-sm btn-primary rounded"><i class="feather-info"></i></a>
                                     <a href="{{ route('post.edit', $post->id) }}"
                                        class="btn btn-warning btn-sm rounded">
                                         <i class="feather-edit-2"></i>
                                     </a>
                                     <button type="submit" form="del{{ $post->id }}"
                                             class="btn btn-sm btn-danger btn-sm rounded"><i
-                                            class="feather-delete"></i></button>
+                                            class="fa fa-trash"></i></button>
                                     <form action="{{ route('post.destroy', $post->id) }}" id="del{{ $post->id }}"
                                           method="post">
                                         @csrf
@@ -75,12 +78,21 @@
                                 <td>{{ $post->created_at }}</td>
                                 <td>{{ $post->updated_at }}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="8" class="text-center text-warning font-weight-bold">There is no post</td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
-                    <div class="">
-                        <hr>
-                        <span class="font-weight-bold">Total: {{$posts->total()}}</span>
+                    <div class="d-flex justify-content-between align-items-center my-1 bg-light pt-2 px-2 rounded shadow-sm">
+                        <div class="m-1">
+                            <span class="font-weight-bold">Total: {{$posts->total()}}</span>
+                        </div>
+                        <div class="m-1">
+                            {{ $posts->appends(request()->all())->links() }}
+                        </div>
+
                     </div>
 
                 </div>

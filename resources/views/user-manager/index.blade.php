@@ -14,19 +14,23 @@
                     <h4><i class="feather-users"></i> User Lists</h4>
                 </div>
                 <div class="card-body">
-                    <div class="d-lg-flex d-md-flex justify-content-between align-items-center ">
-                        <div class="">
-                            {{ $users->appends(Request::all())->links() }}
+                    <div class="d-lg-flex d-md-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex justify-content-center align-items-center">
+                            @isset(request()->search)
+                                <a href="{{route('user-manager.index')}}" class="btn btn-outline-primary"><i class="feather-layers"></i> Show All</a>
+                                <span class="text-primary font-weight-bold ml-3">Search By: {{request()->search}}</span>
+                            @endisset
                         </div>
-                        <div class="mb-2">
+                        <div class="">
                             <form action="{{ route('user-manager.index') }}" method="get">
                                 <div class="d-flex">
-                                    <input type="text" class="form-control mr-2" name="search" placeholder="Enter name or email">
+                                    <input type="text" class="form-control mr-2" name="search" value="{{request()->search}}" placeholder="Enter title or description">
                                     <button class="btn btn-primary">Search</button>
                                 </div>
                             </form>
                         </div>
                     </div>
+
                     <table class="table table-hover mb-0">
                         <thead>
                             <tr>
@@ -39,7 +43,7 @@
                                 <th>Updated At</th>
                             </tr>
                         <tbody>
-                            @foreach ($users as $user)
+                            @forelse($users as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
@@ -99,16 +103,22 @@
                                             {{ $user->updated_at->format('h:i a') }}
                                         </small>
                                     </td>
-
-
                                 </tr>
-                            @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="7" class="text-center text-warning font-weight-bold">There is no User</td>
+                                    </tr>
+                                @endforelse
                         </tbody>
-
-                        </thead>
                     </table>
-                    <div class="my-3">
-                        {{ $users->appends(Request::all())->links() }}
+                    <div class="d-flex justify-content-between align-items-center my-1 bg-light pt-2 px-2 rounded shadow-sm">
+                        <div class="m-1">
+                            <span class="font-weight-bold">Total: {{$users->total()}}</span>
+                        </div>
+                        <div class="m-1">
+                            {{ $users->appends(request()->all())->links() }}
+                        </div>
+
                     </div>
                 </div>
             </div>
