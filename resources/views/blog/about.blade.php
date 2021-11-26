@@ -4,7 +4,7 @@
         <div class="row align-items-center flex-column-reverse flex-lg-row">
             <div class="col-12 col-md-8 col-lg-8 pt-lg-5">
                 <div class="mt-sm-5 wow slideInLeft pt-3">
-                    <h1 class="text-primary">
+                    <h1 class="fw-bold display-5 text-primary mt-2">
                         Aung Kyaw Htwe</h1>
                     <h2 class="w-bold  mt-2">
                         Web Developer</h2>
@@ -33,7 +33,8 @@
                 <div class="p-3 py-3 wow slideInRight ani-delay-1">
                     <h1 class="fw-bold display-5 text-primary mt-2">
                         Why do I become a Developer?</h1>
-                    <p class=" fw-bold fs-5">
+                    <div class="divider my-4"></div>
+                    <p class="">
                         I am an Information Technology Engineering student. I had done my academic project by
                         software
                         development. I am very passionated about software designing, developing. I would
@@ -49,7 +50,7 @@
     <div class="container bg-secondary rounded my-4">
         <div class="row align-items-center justify-content-center py-4">
             <div class="col-12 text-center">
-                <h3 class="text-primary fw-bold">What do I offer?</h3>
+                <h3 class="fw-bold display-5 text-primary mt-2">What do I offer?</h3>
             </div>
             <div class="divider"></div>
         </div>
