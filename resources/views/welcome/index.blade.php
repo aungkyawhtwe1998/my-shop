@@ -104,7 +104,7 @@
                 <div class="row">
                     @foreach ($posts as $post)
                         <div class="col-12 col-lg-4 col-md-4">
-                            <div class="blog-card shadow rounded mb-2 p-2 justify-content-center align-content-center">
+                            <div class="blog-card shadow-sm rounded mb-2 p-2 justify-content-center align-content-center">
                                 <div class="rounded show-thumbnail"
                                      style="background-image:url('{{ asset('storage/post-cover/' . $post->thumbnail->location) }}'); width:100%; height:200px; background-position: center; background-size: cover">
                                 </div>

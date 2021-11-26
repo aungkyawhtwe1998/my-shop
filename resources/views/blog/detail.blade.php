@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     {{-- breadcrumb --}}
-    <div class="row">
+    <div class="row mt-4">
         <div class="font-weight-bold">
             <x-host-bread-crumb>
                 <li class="breadcrumb-item"><a href="{{ route('blogs.index') }}">all blog</a></li>

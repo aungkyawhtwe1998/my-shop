@@ -24,7 +24,7 @@
         </div>
 
     </div>
-    <div class="container bg-light rounded my-5">
+    <div class="container bg-light rounded my-4">
         <div class="row align-items-center mt-5 p-3">
             <div class="col-12 col-lg-6">
                 <img src="{{asset('img/about-me.svg')}}" class="w-100 rounded" alt="">
@@ -46,7 +46,7 @@
 
         </div>
     </div>
-    <div class="container bg-secondary rounded ">
+    <div class="container bg-secondary rounded my-4">
         <div class="row align-items-center justify-content-center py-4">
             <div class="col-12 text-center">
                 <h3 class="text-primary fw-bold">What do I offer?</h3>
