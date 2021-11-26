@@ -4,170 +4,161 @@
 @endsection
 @section('style')
 @endsection
-@section('header')
-    @include('layouts.host-header')
-@endsection
 @section('content')
+
     {{-- home --}}
-   <div class="container-fluid">
-       <div class="row">
-           <div class="container-xl">
-               <div class="row justify-content-between align-items-center my-5">
-                   <div class="col-12 col-lg-6">
-                       <div>
-                           <div class="d-flex justify-content-center align-items-center ">
-                               <span class="home-text animate__animated animate__heartBeat ">C</span> <img src="{{asset(\App\Base::$logo)}}" class="logo-size animate__animated animate__rotateIn animate__repeat-1" width="80px"  alt="Logo"/> <span class="home-text animate__animated animate__heartBeat">DE-LEX</span>
-                           </div>
-                           <div class="text-center mt-3 align-items-center  animate__animated animate__zoomIn animate__delay-1s">
-                               <span class="font-weight-bold text-secondary display-5 animate__animated animate__slideInUp animate__delay-2s">Code Lex is the personal Blog especially <br> for web development and IT.</span>
-                           </div>
-                           <div class="mt-4 d-flex flex-column align-items-center justify-content-center">
-                               <div class="">
-                                   <a href="{{route('welcome')}}/#contact" class="btn btn-primary  animate__animated animate__zoomIn animate__delay-2s ">Contact me
-                                   </a>
-                                   <a href="{{route('welcome')}}/#blog" class="btn btn-outline-primary  animate__animated animate__zoomIn animate__delay-2s">Read Blogs</a>
-                               </div>
-                               <div class="mt-2">
-                                   <div class="divider bg-success  animate__animated animate__zoomIn animate__delay-3s"></div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                   <div class="col-12 col-lg-6">
-                       <div class="text-center">
-                           <img src="{{asset('/img/vect.svg')}}" class="animate__animated animate__zoomIn" width="80%">
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
+    <div class="container-xl">
+        <div class="row mt-5 pt-5 justify-content-between align-items-center ">
+            <div class="col-12 col-lg-6">
+                <div>
+                    <div class="d-flex justify-content-center align-items-center ">
+                        <span class="home-text animate__animated animate__heartBeat ">C</span> <img src="{{asset(\App\Base::$logo)}}" width="50px" height="50px" class="logo-size animate__animated animate__rotateIn animate__delay-1s" alt="Logo"/> <span class="home-text animate__animated animate__heartBeat">DE-LEX</span>
+                    </div>
+                    <div class="text-center mt-3 align-items-center  animate__animated animate__zoomIn animate__delay-1s">
+                        <h4 class="fw-bold text-primary animate__animated animate__zoomIn animate__delay-2s">Code Lex is the personal Blog especially <br> for web development and IT.</h4>
+                    </div>
+                    <div class="mt-4 d-flex flex-column align-items-center justify-content-center">
+                        <div class="">
+                            <a href="{{route('welcome')}}/#contact" class="btn btn-primary  animate__animated animate__zoomIn animate__delay-2s ">Contact me
+                            </a>
+                            <a href="{{route('welcome')}}/#blog" class="btn btn-outline-primary  animate__animated animate__zoomIn animate__delay-2s">Read Blogs</a>
+                        </div>
+                        <div class="mt-2">
+                            <div class="divider bg-success  animate__animated animate__zoomIn animate__delay-3s"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="text-center">
+                    <img src="{{asset('/img/vector.svg')}}" class="animate__animated animate__zoomIn" width="80%">
+                </div>
+            </div>
+        </div>
+    </div>
     {{-- end home --}}
 
     {{--    about --}}
-   <div class="container-fluid rounded bg-secondary ">
-       <div class="row">
-           <div class="container-xl min-vh-50 " id="about" >
-               <div class="row align-items-center justify-content-center my-3" >
-                   <div class="col-12 col-lg-6 mt-5 justify-content-center align-items-center">
-                       <div class="">
-                           <img src="{{asset('/img/vect2.svg')}}" class="rounded" width="100%" alt="Services">
-                       </div>
-                   </div>
-                   <div class="col-12 col-lg-6 justify-content-center align-items-center">
-                       <div class="">
-                           <span class="h1 home-text">Objective</span>
-                           <div class="divider"></div>
-                           <div class="text-left">
-                               <p class="font-weight-bold text-justify text-white">&emsp; This is my personal website for web development journey. I would like to expend my knowledge in web development through this website. I will maintain the website to keep up and running. I would like to thanks all the subscriber to my Youtube channel and Facebook. This blog is intended to upload web development tips and tricks for the beginner and intermediate.
-                               </p>
-                           </div>
-                       </div>
-                   </div>
-
-               </div>
-           </div>
-       </div>
-   </div>
-
-    {{-- blogs --}}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="container-xl align-items-center justify-content-center " id="blog">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="d-flex flex-column text-center mt-5 pt-3 justify-content-center align-items-center">
-                            <span class="h1 home-text"> Blogs</span>
-                            <div class="divider"></div>
-                        </div>
-
-                    </div>
-                    <div class="col-12 ">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="Page navigation example">
-                                {{ $posts->appends(Request::all())->links() }}
-                            </div>
-                            <div class="btn-group p-0 mb-2">
-                                <button type="button"  name="category" class="btn  btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    Categories
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="{{ route('welcome') }}">All</a>
-                                    @foreach ($categories as $category)
-                                        <a class="dropdown-item" href="{{ route('welcome.showByCategory', $category->id) }}">
-                                            {{ $category->title }}
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </div>
-                            {{--<div class="">
-                                <select name=" category" class="custom-select" onchange="window.location.href=this.value;">
-                                    <option value="{{ route('welcome') }}">All</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ route('welcome.showByCategory', $category->id) }}">
-                                            {{ $category->title }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>--}}
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="row">
-                            @foreach ($posts as $post)
-                                <div class="col-12 col-lg-3 col-md-6">
-                                    <div
-                                        class="blog-card shadow rounded mb-2 p-1 justify-content-center align-content-center">
-                                        <div class="rounded show-thumbnail"
-                                             style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}'); width:100%; height:200px">
-                                        </div>
-                                        <div class="">
-                                    <span class=" badge badge-pill
-                                    badge-success">
-                                        <i class="feather-user"></i>
-                                        @isset($post->getUser->name ) {{$post->getUser->name }} @endisset
-                                    </span>
-                                            <span class="badge badge-pill badge-secondary"><i class="fas fa-clock text-light mr-2">
-                                        </i>{{ $post->created_at->diffForHumans() }}
-                                    </span>
-                                        </div>
-                                        <div class="my-2 text-left">
-                                            <span class="h5 font-weight-bold">{!! html_entity_decode($post->name) !!}</span>
-                                            <p class="text-justify" style="color: black">
-                                                {!! substr(html_entity_decode($post->description), 0, 250) !!}
-                                            </p>
-                                            <form
-                                                action="{{ route('welcome.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}"
-                                                method="get">
-                                                <button class="btn btn-primary btn-sm" type="submit">Read More</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
+    <div class="container-xl rounded bg-dark min-vh-50 " id="about" >
+        <div class="row align-items-center justify-content-center my-3" >
+            <div class="col-12 col-lg-6 mt-5 justify-content-center align-items-center">
+                <div class="">
+                    <img src="{{asset('/img/vect2.svg')}}" class="rounded" width="100%" alt="Services">
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 justify-content-center align-items-center">
+                <div class="">
+                    <span class="h3 home-text">Objective</span>
+                    <div class="divider"></div>
+                    <div class="text-left">
+                        <p class="fw-bold text-justify text-white">&emsp; This is my personal website for web development journey. I would like to expend my knowledge in web development through this website. I will maintain the website to keep up and running. I would like to thanks all the subscriber to my Youtube channel and Facebook. This blog is intended to upload web development tips and tricks for the beginner and intermediate.
+                        </p>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
+
+    {{-- blogs --}}
+    <div class="container-xl align-items-center justify-content-center " id="blog">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex flex-column text-center mt-5 pt-3 justify-content-center align-items-center">
+                    <span class="h3 home-text">Latest Articles</span>
+                    <div class="divider"></div>
+                </div>
+
+            </div>
+            <div class="col-12 ">
+                {{--<div class="d-flex justify-content-between align-items-center">
+                    <div class="Page navigation example">
+                        {{ $posts->appends(Request::all())->links() }}
+                    </div>
+                    <div class="btn-group p-0 mb-2">
+                        <button type="button"  name="category" class="btn  btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{ route('welcome') }}">All</a>
+                            @foreach ($categories as $category)
+                                <a class="dropdown-item" href="{{ route('welcome.showByCategory', $category->id) }}">
+                                    {{ $category->title }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                    --}}{{--<div class="">
+                        <select name=" category" class="custom-select" onchange="window.location.href=this.value;">
+                            <option value="{{ route('welcome') }}">All</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ route('welcome.showByCategory', $category->id) }}">
+                                    {{ $category->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>--}}{{--
+                </div>--}}
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    @foreach ($posts as $post)
+                        <div class="col-12 col-lg-4 col-md-4">
+                            <div class="blog-card shadow rounded mb-2 p-2 justify-content-center align-content-center">
+                                <div class="rounded show-thumbnail"
+                                     style="background-image:url('{{ asset('storage/post-cover/' . $post->thumbnail->location) }}'); width:100%; height:200px; background-position: center; background-size: cover">
+                                </div>
+                                <div class="mt-1">
+                                    <span class=" badge badge-pill bg-success"><i class="feather-user"></i>
+                                        @isset($post->users->name ) {{$post->users->name }} @endisset </span>
+                                    <span class="badge badge-pill bg-dark"><i class="fas fa-clock text-light mr-2">
+                                        </i>{{ $post->created_at->diffForHumans() }}
+                                    </span>
+                                </div>
+                                <div class="my-2 text-left">
+                                    <span class="h5 fw-bold">{!! html_entity_decode($post->name) !!}</span>
+                                    <p class="text-justify" style="color: black">
+                                        {!! substr(html_entity_decode($post->description), 0, 250) !!}
+                                    </p>
+                                    <a href="{{route('blogs.show',$post->id)}}" class="btn btn-outline-primary">Read more</a>
+                                    {{--<form
+                                        action="{{ route('blogs.show', ['category' => $post->categories->title, 'id' => $post->id]) }}"
+                                        method="get">
+                                        <button class="btn btn-primary btn-sm" type="submit">Read More</button>
+                                    </form>--}}
+                                </div>
+                            </div>
+
+                        </div>
+                    @endforeach
+                </div>
+                <div class="d-flex">
+                    <div class="col-12 text-center">
+                        <a href="{{route('blogs.index')}}" class="btn btn-primary my-3 ">Explore More >> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {{-- end blogs --}}
 
     {{-- item --}}
-     <div class="container-fluid bg-light rounded ">
+   {{--  <div class="container-fluid  ">
          <div class="row">
-             <div class="container-xl mt-5 " id="item">
+             <div class="container-xl mt-5 bg-light rounded " id="item">
                  <div class="row my-3">
                      <div class="col-12">
-                         <h2 class="mt-3 text-primary text-center font-weight-bolder">Web Development Courses</h2>
-                         <h4 class="mb-3 text-primary text-center font-weight-bold"><i class="feather-arrow-down"></i></h4>
+                         <div class="d-flex flex-column text-center justify-content-center align-items-center">
+                             <span class="h1 mt-3 home-text text-center ">Web Development Courses</span>
+                             <div class="divider bg-primary"></div>
+                         </div>
+
                          <div class="row">
                              @foreach ($items as $item)
                                  <div class="col-12 col-md-6 col-lg-3">
                                      <div class="card m-0 p-0 rounded shadow mb-3">
                                          <div class="card-body">
-                                             <span class="text-primary font-weight-bold">{{ $item->title }}</span>
+                                             <span class="text-primary fw-bold">{{ $item->title }}</span>
                                              <hr>
                                              <div class="">
                                                 <span class="badge badge-pill badge-success">
@@ -199,16 +190,16 @@
                                                  </div>
                                                  <p class="text-justify text-dark">
                                                      {{ substr($item->description, 0, 50) }} ...
-                                                     <a class="text-success font-weight-bold"
+                                                     <a class="text-success fw-bold"
                                                         href="{{ route('welcome-item.show', $item->id) }}">View Detail</a>
                                                  </p>
                                              </div>
                                              <hr>
                                              <div class="d-flex justify-content-between align-items-center text-light">
                                                  <div>
-                                                    <span class="text-black-50 font-weight-bold"><strike>{{ $item->original_price }}
+                                                    <span class="text-black-50 fw-bold"><strike>{{ $item->original_price }}
                                                             KS</strike> </span>
-                                                     <span class="text-success font-weight-bold"> {{ $item->promotion_price }} KS </span>
+                                                     <span class="text-success fw-bold"> {{ $item->promotion_price }} KS </span>
                                                      <span
                                                          class="badge badge-danger badge-pill p-1 m-0">{{ number_format((($item->original_price - $item->promotion_price) / $item->original_price) * 100, 1, '.', '') }}
                                                         %</span>
@@ -228,95 +219,11 @@
                  </div>
              </div>
          </div>
-     </div>
+     </div>--}}
 @endsection
 
 @section('footer-layout')
-    <div class="container-fluid bg-secondary rounded">
-        <div class="row">
-            <div class="container-xl mt-5 pt-3" id="contact">
-                <div class="row mt-5 pt-3 align-items-center justify-content-center">
-                    <div class="col-12 text-center">
-                        <div class="d-flex flex-column justify-content-center align-items-center">
-                            <h2 class="text-success font-weight-bolder">Contact or suggest me</h2>
-                            <div class="divider bg-white"></div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-6 p-3 ">
-                        <div class="bg-light rounded p-3">
-                            <form action="{{ route('message.store') }}" method="POST">
-                                @csrf
-                                <div class="form-group mb-3">
-                                    <input type="text" name="name" class="form-control" placeholder="Enter your name">
-                                    @error('name')
-                                    <small class="font-weight-bold text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Enter your Email">
-                                    @error('email')
-                                    <small class="font-weight-bold text-danger">{{ $message }}</small>
 
-                                    @enderror
-                                </div>
-                                <div class="form-group mb-3">
-                                    <textarea type="text" name="message" class="form-control" rows="5"
-                                              placeholder="message"></textarea>
-                                    @error('message')
-                                    <small class="font-weight-bold text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <button class="btn btn-primary fw-bolder">Send
-                                    Message</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-6">
-                        <iframe class="rounded"
-                                src="
-                                        https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3701.237767292931!2d96.12430261432397!3d21.925409011940438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30cb7273d6d0f81d%3A0x27d920dcc9b4b56d!2s52nd%20St%2C%20Mandalay%2C%20Myanmar%20(Burma)!5e0!3m2!1sen!2ssg!4v1621066874005!5m2!1sen!2ssg"
-                                width="100%" height="335px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
-                    </div>
-                    <div class="col-12 col-lg-6 my-3">
-                        <div class="text-center d-flex flex-column mb-5 text-white">
-                            <h3 class="text-success fw-bolder mb-3 fw-bolder">Contact</h3>
-                            <span>Aung Kyaw Htwe</span>
-                            <span>No3,Between 51 & 52, 113 street, Mandalay</span>
-                            <span>Phone: <a href="tel:09798802184">09798802184</a></span>
-                            <span>Email: aungkyawhtwe.mdy49@gmail.com</span>
-                        </div>
-
-                    </div>
-                    <div class="col-12 col-lg-6 my-3 ">
-                        <div class="d-flex flex-column text-center fs-5">
-                            <h3 class="text-success fw-bolder fw-bolder">My Social Media platform</h3>
-                            <div class="p-5 d-flex justify-content-center align-items-center mt-3">
-                                <a href="https://www.facebook.com/codeLex.mm">
-                                    <i class="mx-3 fab social-icon fa-facebook-f fa-2x "></i>
-                                </a>
-                                <a href="https://www.youtube.com/channel/UCIwB3osrjw9mjX9Heny2V9Q">
-                                    <i class="fab mx-3 social-icon fa-youtube fa-2x"></i>
-                                </a>
-                                <a href="https://github.com/aungkyawhtwe1998">
-                                    <i class="fab mx-3 social-icon fa-github fa-2x"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="col-12 bg-dark rounded mb-2">
-                            <div class="py-5 d-flex flex-column text-center fs-5">
-                                <span class="text-white"> © Copyright Myanmar. All Right Reserved</span>
-                                <span class="text-white"> Designed by<a href="#" class="text-light"> Aung Kyaw Htwe</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
 @endsection
 @section('foot')
     <script>

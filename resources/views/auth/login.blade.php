@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-lg btn-block btn-primary">Sign in</button>
+                            <button type="submit" class="btn btn-lg btn-block btn-primary rounded">Sign in</button>
                         </form>
                     </div>
                 </div>

@@ -57,8 +57,8 @@
                                     {{-- {{Str::words(html_entity_decode($post->description), 100)}}--}}
                                     {!!substr(html_entity_decode($post->description), 0, 200)!!}
                                 </td>
-                                <td>{{ $post->getCategoryName->title }}</td>
-                                <td>@isset($post->getUser->name) {{ $post->getUser->name }} @endisset</td>
+                                <td>{{ $post->categories->title }}</td>
+                                <td>@isset($post->users->name) {{ $post->users->name }} @endisset</td>
                                 <td class="text-nowrap">
                                     <a href="{{ route('post.show', $post->id) }}"
                                        class="btn btn-sm btn-sm btn-primary rounded"><i class="feather-info"></i></a>
@@ -69,7 +69,7 @@
                                     <button type="submit" form="del{{ $post->id }}"
                                             class="btn btn-sm btn-danger btn-sm rounded"><i
                                             class="fa fa-trash"></i></button>
-                                    <form action="{{ route('post.destroy', $post->id) }}" id="del{{ $post->id }}"
+                                    <form action="{{ route('post.destroy', [$post->id,'page'=>request()->page]) }}" id="del{{ $post->id }}"
                                           method="post">
                                         @csrf
                                         @method("delete")

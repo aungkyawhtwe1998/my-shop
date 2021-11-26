@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <x-host-bread-crumb>
@@ -25,7 +25,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-6">
-                <div class="card blog-card bg-secondary rounded shadow">
+                <div class="card blog-card bg-dark rounded shadow">
                     <div class="card-header ">Item Detail</div>
                     <div class="card-body">
                         <h4 class="text-primary font-weight-bold">{{ $item->title }}</h4>
@@ -67,7 +67,7 @@
 @endsection
 
 @section('footer-layout')
-    <div class="container rounded bg-secondary">
+    <div class="container rounded bg-dark">
         <div class="row mt-5 pt-3 align-items-center justify-content-center">
             <div class="col-12 text-center">
                 <h2 class="text-primary font-weight-bolder">Contact or suggest me</h2>
@@ -104,6 +104,7 @@
                         <span class="text-white"> © Copyright Myanmar. All Right Reserved</span>
                         <span class="text-white"> Designed by<a href="#" class="text-light"> Aung Kyaw Htwe</a></span>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

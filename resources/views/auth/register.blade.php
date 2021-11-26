@@ -74,7 +74,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary w-100">
+                            <button type="submit" class="btn btn-primary rounded w-100">
                                 Register
                             </button>
                         </form>

@@ -144,7 +144,7 @@ class PostController extends Controller
             ItemPhoto::destroy($toDel);
         }
         $post->delete();
-        return redirect()->route('post.index')->with("toast",['icon'=>'success','title'=>$post->title." has been deleted"]);
+        return redirect()->route('post.index',['page'=>request()->page])->with("toast",['icon'=>'success','title'=>$post->title." has been deleted"]);
 
     }
 }

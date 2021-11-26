@@ -27,7 +27,7 @@
                             <div class="card rounded shadow">
                                 <div class="card-header">{{ $post->name }}</div>
                                 <div class="card-body">
-                                    <span class="badge badge-pill badge-success"><i class="feather-user"></i>{{ $post->getUser->name }}</span>
+                                    <span class="badge badge-pill badge-success"><i class="feather-user"></i>{{ $post->users->name }}</span>
                                     <span class="badge badge-pill badge-info"><i class="feather-calendar"></i>{{ $post->created_at->format('d M Y') }}</span>
                                     <hr>
                                     <div class="d-inline-block">

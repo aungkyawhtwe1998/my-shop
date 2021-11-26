@@ -1,47 +1,29 @@
-<div class="container-fluid home-nav p-0">
-    <div class="row m-0 p-0 justify-content-center align-items-center">
-        <div class="container-xl p-0 m-0 ">
-            <div class="row my-1 p-0">
-                <div class="col-12">
-                    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm justify-content-between">
-                        <a class="navbar-brand" href="#">
-                            <img src="{{asset(\App\Base::$logo)}}" width="50px" alt="Logo">
-                        </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="menu-icon fa fa-bars fa-2x"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                                <li class="nav-item active">
-                                    <a class="nav-link rounded" href="{{ route('welcome') }}">Home <span
-                                            class="sr-only">(current)</span></a>
-                                </li>
-                                @if (Auth::user()!=null && Auth::user()->role == 0)
-                                    <li class="nav-item">
-                                        <a class="nav-link rounded" href="{{ route('home') }}">Dashboard</a>
-                                    </li>
-                                @endif
-                                <li class="nav-item">
-                                    <a class="nav-link rounded" href="https://aungkyawhtwe1998.github.io/">About</a>
-                                </li>
-
-                            </ul>
-                            {{--<form class="form-inline d-none d-lg-block justify-content-md-center align-items-center just"
-                                  action="{{ route('welcome') }}" method="get">
-                                <div class="form-row d-flex">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                                </div>
-
-                            </form>--}}
-
-                        </div>
-
-                    </nav>
-                </div>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light border-bottom shadow-sm position-fixed top-0 w-100">
+    <div class="container">
+        <a class="navbar-brahnd" href="{{route('blogs.index')}}">
+            <img  src="{{asset(\App\Base::$logo)}}" width="40px" class="me-1" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="menu-icon fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul id="menu-top-right-menu" class="navbar-nav ms-auto mb-2 mb-md-0 ">
+                <li class="nav-item">
+                    <a class="nav-link rounded active" href="{{ route('welcome') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded" href="{{route('blogs.index')}}">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded" href="{{route('about')}}">About</a>
+                </li>
+                @if (Auth::user()!=null && Auth::user()->role == 0)
+                    <li class="nav-item">
+                        <a class="nav-link rounded" href="{{ route('home') }}">Dashboard</a>
+                    </li>
+                @endif
+            </ul>
         </div>
-
     </div>
-</div>
+</nav>

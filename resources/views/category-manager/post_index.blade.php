@@ -51,11 +51,11 @@
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $category->id }}">
-                                            <button type="button" class="btn btn-sm btn-danger"
+                                            <button type="button" class="btn btn-sm btn-danger rounded"
                                                     onclick="deleteCategory({{ $category->id }})"><i
                                                     class="fa fa-trash"></i></button>
                                         </form>
-                                        <button class="btn btn-warning btn-sm"
+                                        <button class="btn btn-warning btn-sm rounded"
                                                 onclick="changeCategoryName({{ $category->id }},'{{ $category->title }}')"><i
                                                 class="fa fa-edit"></i></button>
                                     </td>

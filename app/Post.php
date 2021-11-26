@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public function getUser(){
+    public function users(){
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function getCategoryName(){
+    public function categories(){
         return $this->belongsTo(PostCategory::class,'category_id');
     }
 
-    public function getPhoto(){
+    public function thumbnail(){
         return $this->hasOne(PostCoverPhoto::class);
     }
 

@@ -45,15 +45,17 @@ $(".full-screen-btn").click(function() {
         $(this).html(`<i class ="feather-maximize-2")></i>`);
     }
 });
+if( $(".nav-menu .active").offset()!=undefined){
+    let screenHeight = $(window).height();
+    let currentMenuWeight = $(".nav-menu .active").offset().top;
 
-let screenHeight = $(window).height();
-let currentMenuWeight = $(".nav-menu .active").offset().top;
-
-if (currentMenuWeight > screenHeight * 0.8) {
-    $(".sidebar").animate(
-        {
-            scrollTop: currentMenuWeight - 100
-        },
-        1000
-    );
+    if (currentMenuWeight > screenHeight * 0.8) {
+        $(".sidebar").animate(
+            {
+                scrollTop: currentMenuWeight - 100
+            },
+            1000
+        );
+    }
 }
+

@@ -13,12 +13,12 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid bg-light rounded">
-        <div class="row my-3">
-            <div class="container">
-                <div class="row">
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="container ">
+                <div class="row mt-5">
                     {{-- Left Side bar --}}
-                    <div class="col-12 col-lg-3 d-none d-lg-block">
+                   {{-- <div class="col-12 col-lg-3 d-none d-lg-block">
                         <div class="p-1 mt-2 text-center"><h5 class="font-weight-bold">Advertise here</h5></div>
                         <div class="card mb-1">
 
@@ -27,16 +27,16 @@
                                      height="200px;" alt="">
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                     {{-- end Left side bar --}}
 
                     {{-- Middle --}}
-                    <div class="col-12 col-lg-6 col-md-8 ">
+                    <div class="col-12 col-lg-8 col-md-8">
                         {{-- breadcrumb --}}
                         <div class="row">
                             <div class="font-weight-bold">
                                 <x-host-bread-crumb>
-                                    <li class="breadcrumb-item"><a href="{{ route('welcome') }}">all blog</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('blogs.index') }}">all blog</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">
                                         {{ Str::substr($post->name, 0, 30) }} ...</li>
                                 </x-host-bread-crumb>
@@ -45,9 +45,9 @@
                         {{-- end breadcrumb --}}
 
                         {{-- main post --}}
-                        <div class="card rounded shadow-sm mb-1">
-                            <div class="card-header"><h4 class="text-primary font-weight-bold">{{ $post->name }}</h4></div>
-                            <div class="card-body p-1">
+                        <div class="bg-white mb-1">
+                          <h4 class="text-primary font-weight-bold px-4 pt-4">{{ $post->name }}</h4>
+                            <div class="">
                                     <span class="badge badge-pill badge-success">
                                 <i class="feather-user"></i>@isset($post->getUser->name ) {{$post->getUser->name }} @endisset
                             </span>
@@ -59,11 +59,10 @@
                                 <i class="feather-eye"></i>
                                 1.4K
                             </span>
-                                <hr>
-                                <div class="mb-2">
-                                    @isset($post->getPhoto)
+                                <div class="my-2">
+                                    @isset($post->thumbnail->location)
                                         <div class="cover-thumbnail"
-                                             style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}');">
+                                             style="background-image:url('{{ asset('storage/post-cover/' . $post->thumbnail->location) }}');">
                                         </div>
                                     @endisset
                                 </div>
@@ -152,7 +151,7 @@
                     {{-- End Middle --}}
 
                     {{-- Right Side bar --}}
-                    <div class="col-12 col-lg-3 col-md-4 p-1">
+                    <div class="col-12 col-lg-4 col-md-4 p-1">
                         <div class="row">
                             <div class="col-12">
                                 <div class="p-1 mt-2 text-center">
@@ -161,12 +160,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach ($posts as $post)
+                            @foreach ($related_posts as $post)
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="rounded show-thumbnail"
-                                                 style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}'); width:100%; height:100px">
+                                                 style="background-image:url('{{ asset('storage/post-cover/' . $post->thumbnail->location) }}'); width:100%; height:100px">
                                             </div>
                                             <div>
                                         <span class="badge badge-pill badge-success">
@@ -181,13 +180,12 @@
                                             <i class="feather-eye"></i>
                                             1.4K
                                         </span>
-                                                <hr>
                                             </div>
                                             <div class="my-2 text-left">
                                                 <i class="fas fa-blog text-dark "></i>
                                                 <span class="mytext text-dark fw-bold">{{ Str::substr($post->name, 0, 45) }} ...
                                             <a
-                                                href="{{ route('welcome.show', ['category' => $post->getCategoryName->title, 'id' => $post->id]) }}">Read
+                                                href="{{ route('blogs.show', ['category' => $post->categories->title, 'id' => $post->id]) }}">Read
                                                 more
                                             </a>
                                         </span>
@@ -208,7 +206,7 @@
     </div>
 @endsection
 @section('footer-layout')
-    <div class="container-fluid rounded bg-secondary">
+    <div class="container-fluid rounded bg-dark">
         <div class="row">
             <div class="container-xl  mt-5 pt-3" id="contact">
                 <div class="row mt-5 pt-3 align-items-center justify-content-center">
