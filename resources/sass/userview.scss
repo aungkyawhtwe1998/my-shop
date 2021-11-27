@@ -1,11 +1,11 @@
-$primary: #0e0f29;
-$dark: #0f0f13;
+$primary: #00312B;
+$dark: #1a2121;
 $secondary: #98aeac;
 $light: #f1f2f3;
-$success: #01CED3;
+$success: #80B5AF;
 $warning:#E3B341;
 $danger:#E34C26;
-$border-radius: 2rem;
+$border-radius: 1.5rem;
 $border-width:2.5px;
 $font-family-sans-serif : 'Montserrat', 'Padauk',sans-serif;
 $nav-link-font-weight : bold;
@@ -18,11 +18,12 @@ $nav-link-font-weight : bold;
     --primary: #161953;
     --teal: #016b60;
     --bg-black: #090C10;
+    --success: #80b5af;
     --dark: #1d1c22;
     --gray: #3e4a61;
     --silver: #cacaca;
     --light: #f1f2f3;
-    --border-radius: 2rem;
+    --border-radius: 1.5rem;
     --animate-duration: 4s;
 }
 body{
@@ -149,7 +150,7 @@ html{
     transform: scale(0.98);
 }
 .blog-card:hover {
-    background-color: var(--silver);
+    background-color: var(--success);
 }
 .card {
     margin-bottom: 8px;
@@ -224,12 +225,13 @@ a:hover{
 
 }
 .nav-link {
+    width: 100px;
     border:2px;
     border-radius: var(--border-radius);
     font-size: 20px;
     text-align: center;
     padding: 0.5rem !important;
-    margin-right: 5px;
+    margin: 5px;
 }
 .nav-link:hover {
     border: 2px solid var(--teal);
@@ -313,7 +315,7 @@ a:hover{
     #search{
         .search-box{
             border : 1px solid var(--bs-primary);
-            border-radius: 2rem;
+            border-radius: var(--border-radius);
             padding: 3px;
         }
         .search-input{
@@ -321,7 +323,7 @@ a:hover{
             border: none !important;
             box-sizing: border-box;
             outline: none !important;
-            border-radius: 2rem;
+            border-radius: var(--border-radius);
             padding-left: 20px;
         }
         .search-input:focus{
@@ -331,7 +333,7 @@ a:hover{
         }
 
         .search-btn{
-            border-radius: 2rem;
+            border-radius: var(--border-radius);
             padding: 10px 25px;
             /* height: 40px; */
             /* line-height: 40px; */
@@ -385,8 +387,12 @@ a:hover{
 .my-profile {
     width: 100%;
     border-radius: 50%;
-    border: 5px solid var(--secondary);
+    border: 8px solid var(--secondary);
     transition: 0.5s;
+}
+.my-profile:hover{
+    background-color: var(--teal);
+    transform: scale(1.1);
 }
 .social-v {
     position: absolute;
