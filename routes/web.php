@@ -18,27 +18,28 @@ use Illuminate\Support\Facades\Route;
 
 //welcome page
 Route::get('/', 'WelcomeController@index')->name('welcome');
-//Route::get('/home/category/{id}','WelcomeController@showByCategory')->name('welcome.showByCategory');
 Route::get('/home/{id}','WelcomeController@showItem')->name('welcome-item.show');
+
 //Route::get('/post/{category}/{id}','WelcomeController@show')->name('welcome.show');
+//Route::get('/home/category/{id}','WelcomeController@showByCategory')->name('welcome.showByCategory');
 
 //blog page
 //Route::resource('blogs','BlogController' );
 Route::prefix('blogs')->group(function(){
     Route::get('/', 'BlogController@index')->name('blogs.index');
-    Route::get('/post/{id}','BlogController@showRelatedPost')->name('blogs.show');
-    Route::get('/category/{id}','BlogController@showByCategory')->name('blogs.showByCategory');
+    Route::get('/post/{slug}','BlogController@show')->name('blogs.show');
+    Route::get('/category/{slug}','BlogController@showByCategory')->name('blogs.showByCategory');
     Route::get('/user/{id}','BlogController@baseOnUser')->name('blogs.baseOnUser');
     Route::get('/date/{date}','BlogController@baseOnDate')->name('blogs.baseOnDate');
-
     Route::resource('comment', 'CommentController');
-    Route::view("/about", "blog.about")->name('about');
-
 });
 
+//About page
+Route::view("/about", "blog.about")->name('about');
+
+//Message
 Route::resource('message', 'MessageController');
 Auth::routes();
-
 
 //Auth middleware
 Route::middleware(["auth","isBanned"])->group(function(){

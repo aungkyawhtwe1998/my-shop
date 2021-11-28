@@ -7,6 +7,7 @@ use App\PostCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class PostCategoryController extends Controller
 {
@@ -88,6 +89,9 @@ class PostCategoryController extends Controller
         }
         $category = PostCategory::find($request->id);
         $category->title = $request->name;
+        if($category->title != $request->name){
+            $category->slug = Str::slug($request->name)."-".uniqid();
+        }
         $category->update();
         return response()->json(['status'=>200,"message"=>"Name Change for $category->title is complete"]);
 

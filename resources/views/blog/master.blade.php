@@ -74,7 +74,7 @@
                                    </li>
                                    @foreach($post_categories as $category)
                                        <li class="list-group-item">
-                                           <a href="{{route('blogs.showByCategory',$category->id)}}" class="{{request()->url() == route('blogs.showByCategory',$category->id) ? 'active' : ''}}">{{$category->title}}</a>
+                                           <a href="{{route('blogs.showByCategory',$category->slug)}}" class="{{request()->url() == route('blogs.showByCategory',$category->slug) ? 'active' : ''}}">{{$category->title}}</a>
                                        </li>
                                    @endforeach
 

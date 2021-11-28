@@ -59,7 +59,7 @@
         {{--    Read ALL --}}
         <div class="nav d-flex justify-content-between p-3">
 
-            <a href="{{isset($previousPost) ? route('blogs.show',$previousPost->id) : '#'}}"
+            <a href="{{isset($previousPost) ? route('blogs.show',$previousPost->slug) : '#'}}"
                class="btn btn-outline-primary page-mover rounded-circle @empty($previousPost) disabled @endempty">
                 <i class="feather-chevron-left"></i>
             </a>
@@ -68,7 +68,7 @@
                 Read All
             </a>
 
-            <a href="{{isset($nextPost)? route('blogs.show',$nextPost->id) : '#'}}"
+            <a href="{{isset($nextPost)? route('blogs.show',$nextPost->slug) : '#'}}"
                class="btn btn-outline-primary page-mover rounded-circle @empty($nextPost) disabled @endempty">
                 <i class="feather-chevron-right"></i>
             </a>
@@ -187,7 +187,7 @@
                             <i class="fas fa-blog text-dark "></i>
                             <span class="mytext text-dark fw-bold">{{ Str::substr($post->name, 0, 45) }} ...
                                 <a
-                                    href="{{ route('blogs.show', ['category' => $post->categories->title, 'id' => $post->id]) }}">Read More
+                                    href="{{ route('blogs.show',  $post->slug) }}">Read More
 
                                 </a>
                             </span>

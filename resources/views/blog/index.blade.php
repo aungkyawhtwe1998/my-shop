@@ -16,7 +16,7 @@
 
             <div class="borduserer-bottom mb-4 article-preview">
                 <div class="p-0 p-md-3">
-                    <a href="{{route('blogs.show',['category'=>$post->categories->title, 'id'=>$post->id])}} " class="display-6 fw-bold">
+                    <a href="{{route('blogs.show',$post->slug)}} " class="display-6 fw-bold">
                         {!! html_entity_decode($post->name) !!}
                     </a>
                     <div class="small post-category">
@@ -46,7 +46,7 @@
                                 <span class="small text-black-50"> {{ $post->created_at->diffForHumans() }}</span>
                             </div>
                         </div>
-                        <a href="{{route('blogs.show', $post->id)}}" class="btn btn-outline-primary rounded-pill px-3">Read more</a>
+                        <a href="{{route('blogs.show', $post->slug)}}" class="btn btn-outline-primary rounded-pill px-3">Read more</a>
                     </div>
                     <hr>
                 </div>
