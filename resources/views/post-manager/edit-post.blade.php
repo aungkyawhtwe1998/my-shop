@@ -75,21 +75,21 @@
                                 <div class="card-body">
                                     <span class="font-weight-bold text-primary">Thumbnail</span><br>
                                     <div class="d-inline-block">
-                                        @isset($post->getPhoto)
+                                        @isset($post->thumbnail)
                                             <div class="item-thumbnail shadow">
-                                                <img src="{{ asset('storage/post-cover/' . $post->getPhoto->location)}}" class="rounded" width="150px" height=150px" alt="thumbnail">
+                                                <img src="{{ asset('storage/post-cover/' . $post->thumbnail->location) }} " class="rounded" width="150px" height=100px" alt="thumbnail">
                                             </div>
-                                            <form action="{{ route('post-cover-photo.destroy', $post->getPhoto->id) }}"
+                                            <form action="{{ route('post-cover-photo.destroy', $post->thumbnail->id) }}"
                                                   method="POST">
                                                 @csrf
                                                 @method('delete')
-                                                <button class="btn btn-danger btn-sm" style="margin-top:2px; margin-left:5px">
+                                                <button class="btn btn-danger btn-sm rounded text-center" style="margin-top:2px; margin-left:5px">
                                                     <i class="feather-delete"></i>
                                                 </button>
                                             </form>
                                         @endisset
                                     </div>
-                                    @if (!isset($post->getPhoto))
+                                    @if (!isset($post->thumbnail))
                                         <form action="{{ route('post-cover-photo.store') }}" method="POST"
                                               enctype="multipart/form-data">
                                             @csrf

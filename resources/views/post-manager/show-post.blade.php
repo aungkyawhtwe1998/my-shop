@@ -46,9 +46,9 @@
                                 <div class="card-header">Thumbnail</div>
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        @isset($post->getPhoto)
+                                        @isset($post->thumbnail)
                                             <div class="cover-thumbnail rounded"
-                                                 style="background-image:url('{{ asset('storage/post-cover/' . $post->getPhoto->location) }}');">
+                                                 style="background-image:url('{{ asset('storage/post-cover/' . $post->thumbnail->location) }}'); width:100%; height: 200px; background-size: cover; background-position: center;">
                                             </div>
                                         @endisset
                                     </div>
