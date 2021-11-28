@@ -122,7 +122,7 @@
                                     <p class="text-justify" style="color: black">
                                         {!! substr(html_entity_decode($post->description), 0, 250) !!}
                                     </p>
-                                    <a href="{{route('blogs.show',$post->id)}}" class="btn btn-outline-primary">Read more</a>
+                                    <a href="{{route('blogs.show',$post->slug)}}" class="btn btn-outline-primary">Read more</a>
                                     {{--<form
                                         action="{{ route('blogs.show', ['category' => $post->categories->title, 'id' => $post->id]) }}"
                                         method="get">

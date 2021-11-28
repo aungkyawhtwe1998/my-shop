@@ -9,6 +9,7 @@ use App\PostCoverPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 class PostController extends Controller
 {
@@ -19,10 +20,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        /*$posts = Post::when((isset(request()->search)), function ($q){
-            $search = request()->search;
-            $q->where("name","like","%$search%");
-        })->latest("id")->paginate(2);*/
+        /*$posts = Post::all();
+        foreach ($posts as $p){
+            $p->slug = Str::slug($p->name)."-".uniqid();
+            $p->update();
+        }*/
+
         $posts = Post::when((isset(request()->search)), function ($q){
             $search = request()->search;
             $q->where("name","like","%$search%")->orwhere("description", "Like","%$search%");
@@ -69,6 +72,7 @@ class PostController extends Controller
         }
         $post = new Post();
         $post->name = $request->name;
+        $post->slug =Str::slug($request->name)."-".uniqid();
         $post->description = textFilter($request->description);
         $post->user_id = Auth::id();
         $post->category_id = $request->category_id;
@@ -121,6 +125,9 @@ class PostController extends Controller
             'category_id'=>'required',
         ]);
         $post->name = $request->name;
+        if($post->name != $request->name){
+            $post->slug =Str::slug($request->name)."-".uniqid();
+        }
         $post->description = $request->description;
         $post->category_id = $request->category_id;
         $post->update();
